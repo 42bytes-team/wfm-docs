@@ -7,7 +7,57 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Warframe.market Docs',
   tagline: 'Public API, OAuth, WebSocket, and rules documentation',
-  favicon: 'img/favicon.ico',
+  favicon: 'favicon.ico',
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon-32x32.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon-16x16.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'mask-icon',
+        href: '/safari-pinned-tab.svg',
+        color: '#19a187',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'msapplication-config',
+        content: '/browserconfig.xml',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'theme-color',
+        content: '#101619',
+      },
+    },
+  ],
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -61,15 +111,16 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/logo.png',
     colorMode: {
-      respectPrefersColorScheme: true,
+      defaultMode: 'dark',
+      respectPrefersColorScheme: false,
     },
     navbar: {
-        title: 'Warframe.market Docs',
+        title: 'WFM Dev Portal',
         logo: {
-          alt: 'Warframe.market Docs logo',
-          src: 'img/logo.svg',
+          alt: 'Warframe.market logo',
+          src: 'img/logo-icon.png',
         },
         items: [
           {
@@ -81,6 +132,11 @@ const config: Config = {
           {
             href: 'https://warframe.market',
             label: 'Warframe.market',
+            position: 'right',
+          },
+          {
+            href: 'https://github.com/warframe-market',
+            label: 'GitHub',
             position: 'right',
           },
           {

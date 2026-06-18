@@ -1,32 +1,253 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Any CSS included here will be global. The classic template bundles Infima,
+ * Docusaurus' content-focused CSS framework. The --ifm-* variables below are
+ * Infima's public theme API; our --light/--dark tokens feed those variables.
  */
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #1f7acb;
-  --ifm-color-primary-dark: #1c6eb7;
-  --ifm-color-primary-darker: #1a68ad;
-  --ifm-color-primary-darkest: #16568e;
-  --ifm-color-primary-light: #2386df;
-  --ifm-color-primary-lighter: #2d8de2;
-  --ifm-color-primary-lightest: #4c9fe7;
+  /* Light theme tokens. */
+  --light-bg-screen: #f6efe1;
+  --light-bg-surface-primary: #fffaf0;
+  --light-bg-surface-secondary: #f0e4ce;
+  --light-bg-bottom-menu: #061218;
+  --light-bg-field-primary: #f3ead8;
+  --light-text-primary: #0a0a0b;
+  --light-text-secondary: #263941;
+  --light-text-unfocused: #5f7078;
+  --light-text-inverse: #0a0a0b;
+  --light-outline-divider: rgba(10, 24, 32, 0.16);
+  --light-outline-medium: #7a9aa5;
+  --light-outline-medium-focus: #0a0a0b;
+  --light-link: #6f501d;
+  --light-link-hover: #9b753e;
+  --light-link-active: #0a0a0b;
+  --light-card-shadow: rgba(10, 24, 32, 0.16);
+  --light-hero-glow-primary: rgba(240, 200, 112, 0.32);
+  --light-hero-glow-secondary: rgba(255, 196, 96, 0.22);
+  --light-sidebar-bg: rgba(255, 250, 240, 0.72);
+
+  /* Dark theme tokens from the Figma palette. */
+  --dark-bg-screen: #0a1820;
+  --dark-bg-surface-primary: #061218;
+  --dark-bg-surface-secondary: #162229;
+  --dark-bg-bottom-menu: #050f14;
+  --dark-bg-field-primary: #02131a;
+  --dark-bg-elements-primary: #28373d;
+  --dark-bg-elements-primary-focus: #32444b;
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: #b8c4cc;
+  --dark-text-unfocused: #788890;
+  --dark-text-inverse: #0a0a0b;
+  --dark-text-disabled: #3a4a52;
+  --dark-outline-divider: rgba(255, 255, 255, 0.1);
+  --dark-outline-medium: #7a9aa5;
+  --dark-outline-medium-focus: #ffffff;
+  --dark-outline-dark: #464e50;
+  --dark-buy: #13c190;
+  --dark-buy-focus: #50d2ad;
+  --dark-accent-light: #ffdfa6;
+  --dark-accent-dark: #e6b85e;
+  --dark-accent-focus: #ffffff;
+  --dark-accent-highlight: #f0c870;
+  --dark-accent-gradient-end: #fafafa;
+  --dark-link: #927135;
+  --dark-link-hover: var(--dark-accent-light);
+  --dark-link-active: var(--dark-accent-focus);
+  --dark-star-cyan: #3d92b1;
+  --dark-indicator-online: #34abd6;
+  --dark-card-shadow: rgba(2, 19, 26, 0.48);
+  --dark-hero-glow-primary: rgba(240, 200, 112, 0.18);
+  --dark-hero-glow-secondary: rgba(255, 196, 96, 0.12);
+  --dark-sidebar-bg: rgba(6, 18, 24, 0.58);
+
+  /* Active theme aliases. Light is the default; dark overrides below. */
+  --bg-screen: var(--light-bg-screen);
+  --bg-surface-primary: var(--light-bg-surface-primary);
+  --bg-surface-secondary: var(--light-bg-surface-secondary);
+  --bg-bottom-menu: var(--light-bg-bottom-menu);
+  --bg-field-primary: var(--light-bg-field-primary);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --text-unfocused: var(--light-text-unfocused);
+  --text-inverse: var(--light-text-inverse);
+  --outline-divider: var(--light-outline-divider);
+  --outline-medium: var(--light-outline-medium);
+  --outline-medium-focus: var(--light-outline-medium-focus);
+  --accent-light: var(--dark-accent-light);
+  --accent-dark: var(--dark-accent-dark);
+  --accent-focus: var(--dark-accent-focus);
+  --accent-highlight: var(--dark-accent-highlight);
+  --accent-gradient-end: var(--dark-accent-gradient-end);
+  --link: var(--light-link);
+  --link-hover: var(--light-link-hover);
+  --link-active: var(--light-link-active);
+  --code-color: var(--dark-buy);
+  --code-block-bg: var(--light-bg-field-primary);
+  --card-shadow: var(--light-card-shadow);
+  --hero-glow-primary: var(--light-hero-glow-primary);
+  --hero-glow-secondary: var(--light-hero-glow-secondary);
+  --sidebar-bg: var(--light-sidebar-bg);
+
+  /* Infima/Docusaurus theme variables. */
+  --ifm-background-color: var(--bg-screen);
+  --ifm-background-surface-color: var(--bg-surface-primary);
+  --ifm-color-content: var(--text-secondary);
+  --ifm-color-content-secondary: var(--text-unfocused);
+  --ifm-color-primary: var(--accent-dark);
+  --ifm-color-primary-dark: #d7ad7a;
+  --ifm-color-primary-darker: #c79a5a;
+  --ifm-color-primary-darkest: #9b753e;
+  --ifm-color-primary-light: var(--accent-light);
+  --ifm-color-primary-lighter: var(--accent-highlight);
+  --ifm-color-primary-lightest: var(--accent-focus);
+  --ifm-code-background: var(--bg-field-primary);
+  --ifm-code-color: var(--code-color);
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-footer-background-color: var(--bg-bottom-menu);
+  --ifm-heading-color: var(--text-primary);
+  --ifm-link-color: var(--link);
+  --ifm-link-hover-color: var(--link-hover);
+  --ifm-navbar-background-color: var(--bg-surface-primary);
+  --ifm-navbar-link-color: var(--text-secondary);
+  --ifm-navbar-link-hover-color: var(--link-hover);
+  --ifm-table-border-color: var(--outline-divider);
+  --ifm-toc-border-color: var(--outline-divider);
+  --docusaurus-highlighted-code-line-bg: rgba(19, 193, 144, 0.14);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #63b3ff;
-  --ifm-color-primary-dark: #3fa2ff;
-  --ifm-color-primary-darker: #2d99ff;
-  --ifm-color-primary-darkest: #007ff4;
-  --ifm-color-primary-light: #87c4ff;
-  --ifm-color-primary-lighter: #99cdff;
-  --ifm-color-primary-lightest: #cfe8ff;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --bg-screen: var(--dark-bg-screen);
+  --bg-surface-primary: var(--dark-bg-surface-primary);
+  --bg-surface-secondary: var(--dark-bg-surface-secondary);
+  --bg-bottom-menu: var(--dark-bg-bottom-menu);
+  --bg-field-primary: var(--dark-bg-field-primary);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --text-unfocused: var(--dark-text-unfocused);
+  --text-inverse: var(--dark-text-inverse);
+  --outline-divider: var(--dark-outline-divider);
+  --outline-medium: var(--dark-outline-medium);
+  --outline-medium-focus: var(--dark-outline-medium-focus);
+  --link: var(--dark-link);
+  --link-hover: var(--dark-link-hover);
+  --link-active: var(--dark-link-active);
+  --code-color: var(--dark-buy-focus);
+  --code-block-bg: var(--dark-bg-field-primary);
+  --card-shadow: var(--dark-card-shadow);
+  --hero-glow-primary: var(--dark-hero-glow-primary);
+  --hero-glow-secondary: var(--dark-hero-glow-secondary);
+  --sidebar-bg: var(--dark-sidebar-bg);
+
+  --ifm-background-surface-color: var(--bg-surface-secondary);
+  --ifm-navbar-background-color: var(--bg-bottom-menu);
+  --ifm-table-border-color: var(--dark-outline-dark);
+}
+
+html,
+body {
+  background: var(--bg-screen);
+}
+
+a {
+  color: var(--link);
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration-thickness: 2px;
+}
+
+a:active {
+  color: var(--link-active);
+}
+
+.button.button--primary {
+  --ifm-button-background-color: transparent;
+  --ifm-button-border-color: transparent;
+  background: linear-gradient(90deg, var(--accent-highlight) 0%, var(--accent-gradient-end) 100%);
+  border: 0;
+  color: var(--text-inverse);
+}
+
+.button.button--primary:hover,
+.button.button--primary:focus {
+  background: linear-gradient(90deg, var(--accent-light) 0%, var(--accent-focus) 100%);
+  color: var(--text-inverse);
+}
+
+.button.button--secondary {
+  --ifm-button-background-color: transparent;
+  --ifm-button-border-color: var(--outline-medium);
+  background: transparent;
+  border-color: var(--outline-medium);
+  color: var(--text-primary);
+}
+
+.button.button--secondary:hover,
+.button.button--secondary:focus {
+  --ifm-button-border-color: var(--outline-medium-focus);
+  border-color: var(--outline-medium-focus);
+  color: var(--text-primary);
+}
+
+.navbar {
+  border-bottom: 1px solid var(--outline-divider);
+}
+
+.footer,
+.footer--dark {
+  --ifm-footer-background-color: var(--bg-bottom-menu);
+  background-color: var(--bg-bottom-menu);
+}
+
+.navbar__brand {
+  font-weight: 700;
+}
+
+.navbar__logo {
+  height: 2.25rem;
+  margin-right: 0.65rem;
+}
+
+.navbar__logo img {
+  filter: drop-shadow(0 0 12px rgba(240, 200, 112, 0.22));
+}
+
+.main-wrapper {
+  background:
+    radial-gradient(circle at top right, rgba(19, 193, 144, 0.11), transparent 30rem),
+    linear-gradient(180deg, var(--bg-screen) 0%, var(--bg-surface-primary) 100%);
+}
+
+.theme-doc-sidebar-container,
+.theme-doc-toc-desktop {
+  background: var(--sidebar-bg);
+}
+
+.theme-doc-markdown,
+.card,
+.pagination-nav__link {
+  color: var(--text-secondary);
+}
+
+.theme-code-block,
+div[class*='codeBlockContainer'] {
+  border: 1px solid var(--outline-divider);
+}
+
+.theme-code-block pre.prism-code,
+div[class*='codeBlockContainer'] pre.prism-code,
+pre.prism-code {
+  background-color: var(--code-block-bg) !important;
+}
+
+.table-of-contents__link--active,
+.menu__link--active {
+  color: var(--link-hover);
+}
+
+.menu__link:hover {
+  background: rgba(230, 184, 94, 0.14);
 }
 
 table code,

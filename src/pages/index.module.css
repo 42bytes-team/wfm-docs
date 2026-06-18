@@ -4,8 +4,12 @@
  */
 
 .heroBanner {
-  background: radial-gradient(circle at top left, rgba(31, 182, 255, 0.22), transparent 34%), linear-gradient(135deg, #0b1020 0%, #151b32 58%, #1f2438 100%);
-  color: #f7fbff;
+  background:
+    radial-gradient(circle at 28% 12%, var(--hero-glow-primary), transparent 24rem),
+    radial-gradient(circle at 78% 22%, var(--hero-glow-secondary), transparent 28rem),
+    linear-gradient(135deg, var(--bg-bottom-menu) 0%, var(--bg-screen) 54%, var(--bg-surface-secondary) 100%);
+  border-bottom: 1px solid var(--outline-divider);
+  color: var(--text-primary);
   overflow: hidden;
   padding: 5rem 0;
   position: relative;
@@ -30,15 +34,17 @@
 }
 
 .card {
-  border: 1px solid var(--ifm-color-emphasis-200);
+  background: linear-gradient(180deg, var(--bg-surface-secondary), var(--bg-surface-primary));
+  border: 1px solid var(--outline-divider);
   border-radius: 14px;
   color: var(--ifm-font-color-base);
   padding: 1.5rem;
-  transition: border-color 160ms ease, transform 160ms ease;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .card:hover {
-  border-color: var(--ifm-color-primary);
+  border-color: var(--accent-dark);
+  box-shadow: 0 14px 40px var(--card-shadow);
   color: var(--ifm-font-color-base);
   text-decoration: none;
   transform: translateY(-2px);

@@ -6,7 +6,7 @@ const port = process.env.DOCS_PORT || '3001';
 const openBrowser = process.env.DOCS_OPEN !== 'false';
 const openUrl = process.env.DOCS_OPEN_URL || 'http://docs.warframe.test/docs/intro';
 const healthUrl = `http://127.0.0.1:${port}/docs/intro`;
-const extraArgs = process.argv.slice(2);
+const extraArgs = process.argv.slice(2).filter((arg) => arg !== '--');
 
 const yarnCommand = getYarnCommand();
 const child = spawn(yarnCommand.binary, [...yarnCommand.args, 'docusaurus', 'start', '--host', host, '--port', port, '--no-open', ...extraArgs], {

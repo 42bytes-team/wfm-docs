@@ -91,11 +91,19 @@ Example translated page:
 i18n/ru/docusaurus-plugin-content-docs/current/intro.md
 ```
 
-Run the Russian dev site:
+Run the Russian dev site in development mode:
 
 ```bash
-DOCS_OPEN_URL=http://docs.warframe.test/ru/docs/intro yarn start -- --locale ru
+yarn start --locale ru
 ```
+
+Without opening a browser:
+
+```bash
+yarn start:no-open --locale ru
+```
+
+Docusaurus serves a single selected locale at the root path in dev mode. `yarn start:no-open` serves the default English locale only, so `/ru/docs/intro` is not available from the dev server. Start with `--locale <locale>` to work on another language. After `yarn build`, non-default static builds are emitted under `build/<locale>`, so production-style serving uses paths like `/ru/docs/intro`.
 
 Generate translation message files for Russian:
 

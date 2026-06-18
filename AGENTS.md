@@ -50,6 +50,8 @@ sidebars.ts
 - `yarn install` - install dependencies with Yarn 4.
 - `yarn start` - start Docusaurus on `0.0.0.0:3001` for Nginx proxying and open `docs.warframe.test`.
 - `yarn start:no-open` - start the same dev server without opening a browser.
+- `yarn start --locale <locale>` - start the dev server for one non-default locale.
+- `yarn start:no-open --locale <locale>` - start the dev server for one non-default locale without opening a browser.
 - `yarn start:local` - start Docusaurus with default local behavior and no browser open.
 - `yarn build` - build the static site.
 - `yarn typecheck` - run TypeScript checks.
