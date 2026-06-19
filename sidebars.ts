@@ -38,7 +38,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Contributing',
-      items: ['contributing/documentation-style'],
+      items: ['contributing/documentation-style', 'contributing/http-api-endpoint-format'],
     },
   ],
 };

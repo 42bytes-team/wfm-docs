@@ -41,39 +41,102 @@ If a code change is internal only, state that no public docs update was needed.
 - Do not use old Notion color spans such as `<span color="pink">` in new Markdown docs.
 - Link reusable data models instead of duplicating full schemas on endpoint pages.
 
-## HTTP Endpoint Template
+## HTTP Endpoint Page Format
 
-````md
-## GET /v2/example/{id}
+Use this format for HTTP API endpoint documentation. Do not invent a new visual system unless the user explicitly asks.
 
-Short purpose sentence.
+Reference implementation:
 
-Requires:
+- Example page: `docs/contributing/http-api-endpoint-format.mdx`
+- Components: `src/components/ApiEndpoint/index.tsx`
+- Styles: `src/css/custom.css`
 
-- Authentication: yes or no
-- Scopes: `scopeName` if enforced
+Use `.mdx` for endpoint pages that use `ApiEndpoint`, `ApiBadge`, `ApiCallout`, or `BadgeGrid`. Use `.md` only for plain text pages that do not need these components.
 
-### URL Parameters
+### Imports
+
+At the top of an MDX endpoint page, import only the components you use:
+
+```mdx
+import ApiEndpoint, {ApiBadge, ApiCallout, BadgeGrid} from '@site/src/components/ApiEndpoint';
+import Admonition from '@theme/Admonition';
+```
+
+If the right-side table of contents becomes noisy, keep it endpoint-only with front matter:
+
+```mdx
+---
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+```
+
+### Endpoint Skeleton
+
+Each endpoint should follow this order exactly:
+
+```mdx
+## Endpoint Name
+
+<ApiEndpoint
+  method="GET"
+  path="/v2/items/{slug}"
+  aliases={["/v2/items/id/{itemId}"]}
+  summary="Get one item by slug or ID."
+  badges={[
+    {kind: 'i18n', icon: '🇬🇧', label: 'Language aware'},
+    {kind: 'cache', icon: '⏱', label: '60s cache'},
+  ]}
+/>
+
+<ApiCallout kind="warning" icon="🔒" title="Requires">
+
+- Authentication
+- Scope: `items.read`
+
+</ApiCallout>
+
+### Request
+
+#### URL Parameters
 
 | Name | Type | Description |
 |---|---|---|
-| `id` | `string` | Public resource identifier. |
+| `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the `Item` model. |
 
-### Query Parameters
+#### Query Parameters
 
 | Name | Type | Description |
 |---|---|---|
-| `limit` | `int` | Optional. Default: `50`. Min: `1`. Max: `100`. |
+| `include` | <ApiBadge kind="neutral" label="string" /> | Optional comma-separated includes. |
 
-### Request Body
+#### Headers
+
+| Name | Type | Description |
+|---|---|---|
+| `Language` | <ApiBadge kind="i18n" label="Language" /> | Translation language. Default: `en`. |
+
+#### Body
 
 ```json
 {
-  "field": "value"
+  "example": true
 }
 ```
 
+#### Body Fields
+
+| Field | Type | Description |
+|---|---|---|
+| `example` | <ApiBadge kind="neutral" label="bool" /> | Example request flag. |
+
+#### Constraints
+
+- List validation rules, precedence rules, visibility rules, and size limits here.
+
 ### Response
+
+#### Body
 
 ```json
 {
@@ -83,76 +146,103 @@ Requires:
 }
 ```
 
-### Notes
-
-- Add cache, rate-limit, platform, language, sorting, and visibility notes when implemented.
-````
-
-## Data Model Template
-
-````md
-## ModelName
-
-One sentence describing where the model is used.
+#### Data Fields
 
 | Field | Access | Type | Description |
 |---|---|---|---|
-| `field` |  | `string` | Public field description. |
-| `optionalField` |  | `string or null` | Omitted or `null` when not available. |
-| `moderationField` | `moderator` | `string` | Returned to moderators and higher. |
-
-<details>
-<summary>JSON example</summary>
-
-```json
-{
-  "field": "value",
-  "optionalField": null
-}
+| `id` |  | <ApiBadge kind="neutral" label="string" /> | Unique identifier. |
 ```
 
-</details>
-````
+Omit sections that do not apply. For example, a `GET` endpoint with no request body should not include `#### Body` or `#### Body Fields`.
 
-## WebSocket Template
+### Endpoint Header Rules
 
-````md
-## Command name
+- Use exactly one `ApiEndpoint` per documented route behavior.
+- Put the canonical route in `path` and route variants in `aliases`.
+- Do not include the HTTP method in `aliases`; use `aliases={["/v2/example/{id}"]}`, not `aliases={["GET /v2/example/{id}"]}`.
+- Keep aliases short and less visually important than the canonical route.
+- Write `summary` as one short sentence that states what the endpoint does.
+- Keep the route path literal in `path`; MDX safely handles `{id}` inside component props.
 
-Short behavior description.
+### Badge Rules
 
-Requires:
+Use badges to show endpoint behavior at a glance. Use text labels even when using icons, because icons alone are not accessible.
 
-- Authentication: yes or no
-- Scopes: `scopeName` if enforced
+- `auth`: authentication, ownership, or auth-only data.
+- `i18n`: response changes with `Language`.
+- `crossplay`: response changes with `Crossplay`.
+- `cache`: response is cached or has a documented freshness window.
+- `firstParty`: first-party-only behavior, subscription tier, or restricted client access.
+- `danger`: destructive or restricted behavior.
+- `neutral`: generic state, sorting, upload, ranking, or metadata.
 
-### Client Message
+Common badge examples:
 
-```json
-{
-  "route": "@wfm|cmd/domain/action",
-  "payload": {}
-}
+```mdx
+{kind: 'auth', icon: '🔒', label: 'Auth required'}
+{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}
+{kind: 'crossplay', icon: '🌀', label: 'Crossplay aware'}
+{kind: 'cache', icon: '⏱', label: '60s cache'}
+{kind: 'firstParty', icon: '◆', label: 'First-party only'}
+{kind: 'danger', icon: '✕', label: 'Deletes data'}
+{kind: 'neutral', icon: '⇅', label: 'Custom ranking'}
 ```
 
-### Success Message
+### Callout Rules
 
-```json
-{
-  "route": "@wfm|cmd/domain/action:ok",
-  "payload": {}
-}
+Use `ApiCallout` for auth requirements, first-party restrictions, subscription restrictions, response context, cache notes, and destructive behavior.
+
+Do not use raw Docusaurus directive blocks such as `:::warning` until directive rendering is verified in the running site. In this repository, explicit MDX components are safer:
+
+```mdx
+<ApiCallout kind="warning" icon="🔒" title="Requires">
+
+- Authentication
+- Scope: `orders.write`
+
+</ApiCallout>
 ```
 
-### Error Message
+Use Docusaurus `Admonition` only when a built-in admonition is specifically desired:
 
-```json
-{
-  "route": "@wfm|cmd/domain/action:error",
-  "payload": "app.error.key"
-}
+```mdx
+<Admonition type="info" title="Note">
+This is a rendered Docusaurus admonition.
+</Admonition>
 ```
-````
+
+### Request And Response Rules
+
+- Use `### Request` and `### Response` as the two big sections inside each endpoint.
+- Use `#### URL Parameters`, `#### Query Parameters`, `#### Headers`, `#### Body`, `#### Body Fields`, and `#### Constraints` under `Request`.
+- Use `#### Body` and `#### Data Fields` under `Response`.
+- Keep the right TOC clean by using page front matter when needed, instead of inventing non-heading markup.
+- Do not wrap every subsection in custom cards or containers. It makes the MDX hard to maintain and hurts readability.
+- Use tables for structured field information and short paragraphs for behavior notes.
+
+### Table Rules
+
+- Parameter tables use `Name`, `Type`, and `Description`.
+- Request body field tables use `Field`, `Type`, and `Description`.
+- Response field tables use `Field`, `Access`, `Type`, and `Description` when visibility differs by user role.
+- Use `<ApiBadge kind="neutral" label="string" />` for types in rich MDX tables.
+- Use access badges such as `<ApiBadge kind="auth" icon="👤" label="owner" />` only when the field is not visible to every caller.
+
+### JSON And HTTP Examples
+
+- Keep JSON valid and copyable.
+- Do not put comments inside JSON examples.
+- Use realistic placeholder values such as `example-id`, not random UUIDs unless the real format matters.
+- For multipart requests, show the content type and a small `http` fenced block.
+
+### Do Not
+
+- Do not use Notion-only formatting or old color spans.
+- Do not make emojis the only source of meaning.
+- Do not include HTTP methods in alternative routes.
+- Do not add decorative route icons unless the user asks.
+- Do not create nested container/card layouts around every subsection.
+- Do not duplicate large reusable schemas on endpoint pages; link shared models instead.
 
 ## Verification
 

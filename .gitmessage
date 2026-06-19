@@ -1,0 +1,17 @@
+# Subject, about 50 characters
+# <type>[optional scope]: <imperative description>
+#
+# types: fix, feat, chore, docs, style, test, refactor, perf, revert
+# scopes: api, routing, scss, tos, orders, riven, agents, etc.
+#
+# Use present tense: "fix order validation", not "fixed order validation".
+
+# Body, wrap at 72 characters
+# Explain the problem and solution when the subject is not enough.
+# Include verification, for example:
+# Tested: yarn test
+# Not run: yarn build (reason)
+
+# Footer, wrap at 72 characters
+# Refs #123
+# Fixes #123

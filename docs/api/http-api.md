@@ -8,7 +8,7 @@ This page will contain public HTTP endpoint documentation migrated from Notion.
 
 ## Endpoint Template
 
-Use this structure for endpoint sections unless the endpoint is intentionally simpler.
+Use this structure for endpoint sections unless the endpoint is intentionally simpler. See [HTTP API Endpoint Format](../contributing/http-api-endpoint-format.md) for fuller examples.
 
 ````md
 ## GET /v2/example/{id}
