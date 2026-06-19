@@ -138,6 +138,7 @@ const config: Config = {
             href: 'https://github.com/warframe-market',
             label: 'GitHub',
             position: 'right',
+            className: 'header-github-link',
           },
           {
             type: 'localeDropdown',
@@ -179,6 +180,7 @@ const config: Config = {
             {
               label: 'GitHub',
               href: 'https://github.com/warframe-market',
+              className: 'footer-github-link',
             },
           ],
         },

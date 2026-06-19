@@ -38,7 +38,13 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'WebSockets',
-      items: ['websockets/overview'],
+      items: [
+        'websockets/overview',
+        'websockets/reports',
+        'websockets/authentication',
+        'websockets/status-and-activity',
+        'websockets/subscriptions',
+      ],
     },
     {
       type: 'category',

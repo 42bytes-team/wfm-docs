@@ -8,6 +8,8 @@ type EndpointBadge = {
   label: string;
 };
 
+type WsMessageType = 'Command' | 'Event' | 'Stream' | 'Error';
+
 type EndpointProps = {
   aliases?: string[];
   badges?: EndpointBadge[];
@@ -25,6 +27,13 @@ type ApiCalloutProps = {
 
 type BadgeGridProps = {
   badges: EndpointBadge[];
+};
+
+type WsMessageProps = {
+  badges?: EndpointBadge[];
+  route: string;
+  summary: string;
+  type: WsMessageType;
 };
 
 export function ApiBadge({icon, kind = 'neutral', label}: EndpointBadge) {
@@ -55,6 +64,19 @@ export function ApiCallout({children, icon, kind = 'neutral', title}: ApiCallout
       </div>
       <div className="api-callout__content">{children}</div>
     </aside>
+  );
+}
+
+export function WsMessage({badges = [], route, summary, type}: WsMessageProps) {
+  return (
+    <section className="ws-message">
+      <div className="ws-message__route">
+        <span className={`ws-message__type ws-message__type--${type.toLowerCase()}`}>{type}</span>
+        <code>{route}</code>
+      </div>
+      <p>{summary}</p>
+      {badges.length > 0 ? <BadgeGrid badges={badges} /> : null}
+    </section>
   );
 }
 

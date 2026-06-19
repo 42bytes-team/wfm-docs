@@ -403,6 +403,88 @@ p code {
   margin-top: 0.9rem;
 }
 
+.ws-message {
+  position: relative;
+  margin: 1.35rem 0 1.2rem;
+  padding: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(52, 171, 214, 0.28);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(52, 171, 214, 0.12), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015)),
+    var(--bg-surface-primary);
+  box-shadow: 0 16px 42px var(--card-shadow);
+}
+
+.ws-message::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  content: '';
+  background: linear-gradient(90deg, #34abd6, #b994ff, var(--accent-highlight));
+}
+
+.ws-message__route {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.ws-message__route code {
+  padding: 0.28rem 0.55rem;
+  overflow-wrap: anywhere;
+  border: 1px solid var(--outline-divider);
+  border-radius: 10px;
+  background: var(--bg-field-primary);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.ws-message__type {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.8rem;
+  padding: 0.18rem 0.62rem;
+  border-radius: 8px;
+  color: #071318;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.ws-message__type--command {
+  background: #b994ff;
+}
+
+.ws-message__type--event {
+  background: #34abd6;
+}
+
+.ws-message__type--stream {
+  background: #13c190;
+}
+
+.ws-message__type--error {
+  background: #ff6b6b;
+}
+
+.ws-message p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.ws-message .api-badge-grid {
+  margin-top: 0.85rem;
+}
+
 .api-badge {
   display: inline-flex;
   gap: 0.34rem;
@@ -521,6 +603,25 @@ p code {
   box-shadow: 0 10px 28px var(--card-shadow);
 }
 
+.header-github-link,
+.footer-github-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.header-github-link::before,
+.footer-github-link::before {
+  content: '';
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 auto;
+  background-color: currentColor;
+  mask: url('/img/github.svg') center/contain no-repeat;
+  -webkit-mask: url('/img/github.svg') center/contain no-repeat;
+}
+
 @media (max-width: 640px) {
   .api-endpoint {
     padding: 0.95rem;
@@ -531,6 +632,10 @@ p code {
   }
 
   .api-endpoint__route code {
+    width: 100%;
+  }
+
+  .ws-message__route code {
     width: 100%;
   }
 
