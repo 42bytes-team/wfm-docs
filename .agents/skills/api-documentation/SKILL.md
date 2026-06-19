@@ -9,7 +9,19 @@ description: Use when adding or changing public Warframe.market docs for HTTP AP
 
 Document public behavior from code evidence, not memory.
 
-Before changing docs, inspect the source of truth in the relevant service repository. If you cannot verify behavior from code or tests, mark it as a draft or ask the user.
+Before changing public API behavior docs, inspect the source of truth in the relevant service repository. If you cannot verify behavior from code or tests, do not invent it; ask the maintainer or limit the change to wording-only edits.
+
+## Contributor Modes
+
+Choose the correct mode before editing:
+
+- Wording-only docs edit: grammar, clarity, typos, formatting, navigation text, or examples that do not change public behavior. Backend access is not required. Do not reinterpret API behavior.
+- Public contract edit: routes, fields, auth, scopes, headers, status codes, examples, request/response shapes, validation, visibility, rate limits, caching, sorting, or rules. Backend source evidence is required.
+- Maintainer sync task: compare docs against the private API repository and update docs. Backend source evidence is required.
+
+Most public contributors will not have access to the private API repository. If backend source is unavailable, they can still make wording-only improvements, but they must not change the documented contract.
+
+Backend source locations in specialized skills are examples. Maintainers commonly keep the private API repository next to this docs repository as `../Api`, but contributors may not have it. If the API repository is unavailable, stop any contract update and state that backend verification is required.
 
 ## When Docs Must Change
 
@@ -138,11 +150,11 @@ Each endpoint should follow this order exactly:
 
 #### Body
 
-```json
+```ts
 {
-  "apiVersion": "x.x.x",
-  "data": {},
-  "error": null
+  apiVersion: "x.x.x",
+  data: ExampleModel,
+  error: null,
 }
 ```
 
@@ -228,10 +240,13 @@ This is a rendered Docusaurus admonition.
 - Use `<ApiBadge kind="neutral" label="string" />` for types in rich MDX tables.
 - Use access badges such as `<ApiBadge kind="auth" icon="👤" label="owner" />` only when the field is not visible to every caller.
 
-### JSON And HTTP Examples
+### JSON, Type Shape, And HTTP Examples
 
 - Keep JSON valid and copyable.
 - Do not put comments inside JSON examples.
+- Use `json` only for real request bodies, real error envelopes, concrete inline responses, and other copyable payloads.
+- Use `ts` for schematic response shapes that reference reusable models, such as `data: Item[]` or `data: UserPrivate`.
+- Do not write model placeholders as JSON strings, such as `"data": "Item"` or `"data": ["Item"]`; they read as string values, not model types.
 - Use realistic placeholder values such as `example-id`, not random UUIDs unless the real format matters.
 - For multipart requests, show the content type and a small `http` fenced block.
 

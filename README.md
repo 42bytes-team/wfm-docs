@@ -35,7 +35,7 @@ DOCS_OPEN=false yarn start
 To open a different URL after the server starts:
 
 ```bash
-DOCS_OPEN_URL=http://docs.warframe.test/docs/api/http-api yarn start
+DOCS_OPEN_URL=http://docs.warframe.test/docs/api/overview yarn start
 ```
 
 To use a different host or port:

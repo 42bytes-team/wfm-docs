@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Warframe.market Public Docs
+# Intoduction
 
 This site documents public Warframe.market contracts for API clients, OAuth integrations, WebSocket clients, and marketplace policy consumers.
 
@@ -16,8 +16,8 @@ This Docusaurus project is the new home for public documentation. The initial pa
 
 | Area | Purpose |
 |---|---|
-| [HTTP API](./api/overview.md) | Endpoint behavior, headers, request fields, response envelopes, rate limits, caching, and errors. |
-| [Data Models](./api/data-models.md) | Reusable JSON shapes, enum values, visibility rules, and examples. |
+| [HTTP API](./api/overview.mdx) | Endpoint behavior, headers, request fields, response envelopes, rate limits, caching, and errors. |
+| [Data Models](./data-models.mdx) | Reusable JSON shapes, enum values, visibility rules, and examples. |
 | [OAuth 2.0](./oauth/overview.md) | Client authorization, scopes, token exchange, refresh, revoke, and OAuth errors. |
 | [WebSockets](./websockets/overview.md) | Realtime message envelopes, commands, events, routes, payloads, and auth behavior. |
 | [Rules](./rules/overview.md) | Public marketplace rules and client-facing policy notes. |

@@ -18,8 +18,8 @@
   --light-outline-divider: rgba(10, 24, 32, 0.16);
   --light-outline-medium: #7a9aa5;
   --light-outline-medium-focus: #0a0a0b;
-  --light-link: #6f501d;
-  --light-link-hover: #9b753e;
+  --light-link: #8f5600;
+  --light-link-hover: #6f4300;
   --light-link-active: #0a0a0b;
   --light-card-shadow: rgba(10, 24, 32, 0.16);
   --light-hero-glow-primary: rgba(240, 200, 112, 0.32);
@@ -31,7 +31,7 @@
   --dark-bg-surface-primary: #061218;
   --dark-bg-surface-secondary: #162229;
   --dark-bg-bottom-menu: #050f14;
-  --dark-bg-field-primary: #02131a;
+  --dark-bg-field-primary: #110c03; /* #02131a; */
   --dark-bg-elements-primary: #28373d;
   --dark-bg-elements-primary-focus: #32444b;
   --dark-text-primary: #ffffff;
@@ -50,7 +50,7 @@
   --dark-accent-focus: #ffffff;
   --dark-accent-highlight: #f0c870;
   --dark-accent-gradient-end: #fafafa;
-  --dark-link: #927135;
+  --dark-link: #bf8734;
   --dark-link-hover: var(--dark-accent-light);
   --dark-link-active: var(--dark-accent-focus);
   --dark-star-cyan: #3d92b1;

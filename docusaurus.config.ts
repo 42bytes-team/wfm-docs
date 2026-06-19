@@ -157,7 +157,7 @@ const config: Config = {
             },
             {
               label: 'HTTP API',
-              to: '/docs/api/http-api',
+              to: '/docs/api/overview',
             },
             {
               label: 'WebSockets',

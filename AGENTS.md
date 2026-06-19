@@ -11,7 +11,9 @@ Before specialized work, read the matching skill:
 | Task | Skill |
 |---|---|
 | Docusaurus config, package scripts, navigation, styling, build, or dependency changes | `.agents/skills/docusaurus-project/SKILL.md` |
-| API, OAuth, WebSocket, data model, rules, or public contract documentation | `.agents/skills/api-documentation/SKILL.md` |
+| HTTP endpoint documentation from `vex-web/routes.go` and `handlers/` | `.agents/skills/http-api-endpoint-documentation/SKILL.md` |
+| Data model documentation from backend `entity_*.json.go` files | `.agents/skills/data-model-documentation/SKILL.md` |
+| API, OAuth, WebSocket, rules, or public contract documentation | `.agents/skills/api-documentation/SKILL.md` |
 | Git status, staging, commits, branches, or repository hygiene | `.agents/skills/git-workflow/SKILL.md` |
 | Code review, docs review, diff review, or merge-readiness check | `.agents/skills/code-review/SKILL.md` |
 
@@ -26,6 +28,12 @@ If more than one skill applies, read all relevant skills. More specific instruct
 5. Keep examples copyable. JSON examples must be valid enough for readers to understand the shape.
 6. Use stable headings and simple tables so future LLM updates and reviews are reliable.
 7. Run the smallest relevant verification: usually `yarn build`, `yarn typecheck`, or both.
+
+## Public Contributors
+
+Most public contributors will not have access to the private API backend repository. Without backend source evidence, only make wording-only documentation improvements such as grammar, clarity, formatting, or typo fixes. Do not change documented public behavior, request/response shapes, fields, auth requirements, scopes, status codes, enum values, validation rules, or examples that imply contract changes.
+
+Maintainers usually keep the private API repository next to this docs repository as `../Api`. If that repository is unavailable and a requested change needs backend verification, ask for maintainer input instead of guessing.
 
 ## Project Layout
 

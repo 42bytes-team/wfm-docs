@@ -19,7 +19,7 @@ function HomepageHeader() {
           <Link className="button button--primary button--lg" to="/docs/intro">
             Start reading
           </Link>
-          <Link className="button button--secondary button--lg" to="/docs/api/http-api">
+          <Link className="button button--secondary button--lg" to="/docs/api/overview">
             HTTP API
           </Link>
         </div>
@@ -36,7 +36,7 @@ export default function Home(): ReactNode {
       <HomepageHeader />
       <main>
         <section className={styles.cards}>
-          <Link className={styles.card} to="/docs/api/http-api">
+          <Link className={styles.card} to="/docs/api/overview">
             <Heading as="h2">HTTP API</Heading>
             <p>Routes, headers, auth requirements, request bodies, response envelopes, and errors.</p>
           </Link>

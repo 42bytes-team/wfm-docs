@@ -15,10 +15,20 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   docsSidebar: [
     'intro',
+    'data-models',
     {
       type: 'category',
       label: 'HTTP API',
-      items: ['api/overview', 'api/http-api', 'api/data-models'],
+      items: [
+        'api/overview',
+        'api/manifests',
+        'api/orders',
+        'api/groups',
+        'api/users',
+        'api/achievements',
+        'api/authentication',
+        'api/dashboard',
+      ],
     },
     {
       type: 'category',
