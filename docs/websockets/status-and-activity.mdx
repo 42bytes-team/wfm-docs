@@ -56,10 +56,25 @@ The server is the source of truth for status. A client should wait for the curre
 |---|---|---|
 | `status` | <ApiBadge kind="neutral" label="string" /> | Required. One of `online`, `ingame`, `invisible`. |
 | `duration` | <ApiBadge kind="neutral" label="int or null" /> | Optional. Duration in seconds. Min: `60`. Max: `21600` (`6h`). Send `null` to remove an existing duration. |
-| `activity` | <ApiBadge kind="neutral" label="object or null" /> | Optional. Full activity object. Send `null` to clear existing activity. |
-| `activity.type` | <ApiBadge kind="neutral" label="string" /> | Required when `activity` is an object. One of `UNKNOWN`, `IDLE`, `ON_MISSION`, `IN_DOJO`, `IN_ORBITER`, `IN_RELAY`. |
-| `activity.details` | <ApiBadge kind="neutral" label="string" /> | Optional. Max: `64` characters. |
-| `activity.startedAt` | <ApiBadge kind="neutral" label="int" /> | Required when `activity` is an object. Unix timestamp between one day ago and now. |
+| `activity` | <ApiBadge kind="neutral" label="object or null" /> | Optional. Full activity object. Send `null` to clear existing activity. See Activity Fields below. |
+
+### Activity Fields
+
+When `activity` is an object, it replaces the whole current activity. Send all fields needed for the new activity state.
+
+```json
+{
+  "type": "ON_MISSION",
+  "details": "Plains of Eidolon - Bounty Tier 3",
+  "startedAt": 1745424871
+}
+```
+
+| Field | Type | Description |
+|---|---|---|
+| `type` | <ApiBadge kind="neutral" label="string" /> | Required. One of `UNKNOWN`, `IDLE`, `ON_MISSION`, `IN_DOJO`, `IN_ORBITER`, `IN_RELAY`. |
+| `details` | <ApiBadge kind="neutral" label="string" /> | Optional. Free-form activity details. Max: `64` characters. |
+| `startedAt` | <ApiBadge kind="neutral" label="int" /> | Required. Unix timestamp in seconds. Must be between one day ago and now. |
 
 ### Success Message
 

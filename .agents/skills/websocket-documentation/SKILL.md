@@ -37,6 +37,7 @@ Do not document from memory. Do not invent routes, payload fields, scopes, event
 Always read these docs-side files first:
 
 - the relevant page under `docs/websockets/`
+- `docs/contributing/websocket-message-format.mdx`
 - `docs/data-models.mdx`
 - `src/components/ApiEndpoint/index.tsx`
 - `.agents/skills/api-documentation/SKILL.md`
@@ -137,7 +138,7 @@ Examples:
 
 ## Route Documentation Format
 
-Use the style from the existing pages in `docs/websockets/`. Keep WebSocket docs mostly Markdown with `WsMessage`, API badges, and callouts where useful.
+Use the style from `docs/contributing/websocket-message-format.mdx` and the existing pages in `docs/websockets/`. Keep WebSocket docs mostly Markdown with `WsMessage`, API badges, and callouts where useful.
 
 Required import pattern when using components:
 

@@ -2,32 +2,46 @@
 sidebar_position: 1
 ---
 
-# Intoduction
+# Introduction
 
-This site documents public Warframe.market contracts for API clients, OAuth integrations, WebSocket clients, and marketplace policy consumers.
+Welcome to the Warframe.market developer documentation.
 
-These pages are intentionally Markdown-first so maintainers and LLM agents can update them locally, review diffs, and publish a static site.
+These docs describe the public contracts for Warframe.market HTTP APIs, realtime WebSocket messages, shared data models, OAuth plans, and public API-client rules.
 
-## Current Status
+## Current State
 
-This Docusaurus project is the new home for public documentation. The initial pages are drafts that establish structure and writing conventions before the existing Notion content is migrated.
+The current API and WebSocket contracts are still below `1.0`. Expect changes, including breaking changes, while the new public API is being rolled out.
 
-## Documentation Areas
+New API endpoints are added gradually. Some areas are already documented, while others may still be missing or incomplete.
 
-| Area | Purpose |
+The legacy v1 API is deprecated and unsupported. We do not plan to publish new v1 documentation.
+
+## OAuth 2.0 Status
+
+OAuth 2.0 is still in development and is not available to public integrations yet.
+
+It is not currently possible to register your own OAuth client. For now, integrations that require user authorization still need to rely on the existing v1 authorization flow.
+
+We know this is not ideal, and we are sorry for the messy transition period.
+
+## Where To Start
+
+| Area | Use It For |
 |---|---|
-| [HTTP API](./api/overview.mdx) | Endpoint behavior, headers, request fields, response envelopes, rate limits, caching, and errors. |
-| [Data Models](./data-models.mdx) | Reusable JSON shapes, enum values, visibility rules, and examples. |
-| [OAuth 2.0](./oauth/overview.md) | Client authorization, scopes, token exchange, refresh, revoke, and OAuth errors. |
-| [WebSockets](./websockets/overview.mdx) | Realtime message envelopes, commands, events, routes, payloads, and auth behavior. |
-| [Rules](./rules/overview.md) | Public marketplace rules and client-facing policy notes. |
+| [HTTP API](./api/overview.mdx) | Reading marketplace data, managing orders, working with users, achievements, manifests, and dashboard content. |
+| [WebSockets](./websockets/overview.mdx) | Receiving realtime status updates, online reports, account events, and order subscription events. |
+| [Data Models](./data-models.mdx) | Understanding reusable response shapes such as `Item`, `Order`, `User`, `RichStatus`, and shared enum values. |
+| [OAuth 2.0](./oauth/overview.md) | Planned OAuth 2.0 behavior. Public client registration is not available yet. |
+| [Rules](./rules/overview.md) | Understanding public marketplace and API-client policy. |
 
-## Local Development
+## Questions And Support
 
-Run the development server from `Services/Docs`:
+Third-party developer questions should be directed to our Discord server:
 
-```bash
-yarn start
-```
+[Join the Warframe.market Discord](https://discord.gg/M7BHnPS)
 
-The dev server listens on `0.0.0.0:3001` so the local Nginx container can proxy `docs.warframe.test` to the host machine.
+## Contributing
+
+We welcome improvements to this documentation project on GitHub.
+
+If you want to improve wording, fix mistakes, or add missing documentation, see [Documentation Style](./contributing/documentation-style.md).

@@ -5,42 +5,54 @@ toc_max_heading_level: 2
 ---
 
 import ApiEndpoint, {ApiBadge, ApiCallout, BadgeGrid} from '@site/src/components/ApiEndpoint';
-import Admonition from '@theme/Admonition';
 
 # HTTP API Endpoint Format
 
-Use this page as the rich Markdown/MDX reference for endpoint documentation style. The examples are illustrative format samples, not public API contracts.
+Use this page as the Markdown/MDX reference for HTTP endpoint documentation style. The examples are illustrative format samples, not public API contracts.
 
 ## Visual Language
 
-Endpoint pages can stay mostly Markdown, but use MDX components where readability benefits from richer UI.
+Endpoint pages should stay mostly Markdown, with `ApiEndpoint` cards for routes and API UI components for badges, callouts, and field types.
 
 <BadgeGrid
   badges={[
     {kind: 'auth', icon: '🔒', label: 'Auth required'},
     {kind: 'i18n', icon: '🇬🇧', label: 'Language aware'},
-    {kind: 'crossplay', icon: '🌀', label: 'Crossplay aware'},
+    {kind: 'crossplay', icon: '🌀', label: 'Platform/crossplay aware'},
     {kind: 'cache', icon: '⏱', label: 'Cached'},
     {kind: 'firstParty', icon: '◆', label: 'First-party only'},
-    {kind: 'accessibility', icon: '♿', label: 'Accessible format'},
+    {kind: 'danger', icon: '✕', label: 'Deletes data'},
   ]}
 />
 
 ### Conventions
 
-- Use endpoint headers with method pills, route paths, alternative routes, and metadata chips.
-- Keep chips text-first; icons and emoji are visual aids, not the only meaning.
-- Use custom callouts or the `Admonition` component for warnings and notes until `:::` parsing is configured.
+- Use `ApiEndpoint` for every documented route behavior.
+- Put the canonical route in `path` and route variants in `aliases`.
+- Do not include the HTTP method in `aliases`.
+- Keep badges text-first; icons and emoji are visual aids, not the only meaning.
 - Split each endpoint into `Request` and `Response` sections.
-- Use `####` headings inside those sections for URL parameters, query parameters, headers, body, fields, constraints, and response fields.
-- Use tables for URL parameters, query parameters, headers, request fields, response fields, and model fields.
-- Keep JSON examples copyable and syntactically valid.
+- Use `####` headings inside those sections for URL parameters, query parameters, headers, body, fields, constraints, errors, and response fields.
+- Use `json` for concrete copyable payloads.
+- Use `ts` for schematic responses that contain reusable model types, such as `data: Order[]`.
+- Link reusable models to [Data Models](../data-models.mdx) instead of duplicating full schemas.
+- Use `ApiCallout` for auth requirements, restrictions, response context, and implementation notes.
+- Do not use raw `:::warning` blocks unless directive rendering has been verified.
 
-<Admonition type="info" title="Docusaurus admonition component">
-This is rendered with Docusaurus' built-in `Admonition` component. It is a safe replacement for literal `:::` blocks when the Markdown parser is not applying directive syntax.
-</Admonition>
+## Badge Table
 
-## Complex JSON Endpoint
+Render markers directly in tables when explaining endpoint behavior.
+
+| Marker | Meaning |
+|---|---|
+| <ApiBadge kind="auth" icon="🔒" label="Auth required" /> | Endpoint requires authentication or returns auth-only data. |
+| <ApiBadge kind="i18n" icon="🇬🇧" label="Language aware" /> | Response changes with the `Language` header. |
+| <ApiBadge kind="crossplay" icon="🌀" label="Platform/crossplay aware" /> | Response changes with `Platform` or `Crossplay` headers. |
+| <ApiBadge kind="cache" icon="⏱" label="Cached" /> | Response has documented cache or freshness behavior. |
+| <ApiBadge kind="firstParty" icon="◆" label="First-party only" /> | Endpoint is restricted to first-party clients or special access. |
+| <ApiBadge kind="danger" icon="✕" label="Deletes data" /> | Endpoint deletes data or performs destructive behavior. |
+
+## JSON Endpoint Example
 
 <ApiEndpoint
   method="PATCH"
@@ -49,9 +61,8 @@ This is rendered with Docusaurus' built-in `Admonition` component. It is a safe 
   summary="Update an example resource and return the updated model."
   badges={[
     {kind: 'auth', icon: '🔒', label: 'Auth required'},
-    {kind: 'crossplay', icon: '🌀', label: 'Crossplay aware'},
+    {kind: 'crossplay', icon: '🌀', label: 'Platform/crossplay aware'},
     {kind: 'i18n', icon: '🇬🇧', label: 'Language aware'},
-    {kind: 'accessibility', icon: '♿', label: 'Accessible tables'},
     {kind: 'cache', icon: '⏱', label: '60s cache'},
   ]}
 />
@@ -76,14 +87,14 @@ Response data depends on the `Platform`, `Crossplay`, and `Language` headers. Re
 | Name | Type | Description |
 |---|---|---|
 | `id` | <ApiBadge kind="neutral" label="string" /> | `id` field from the linked model. |
-| `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the linked model. |
+| `slug` | <ApiBadge kind="neutral" label="string" /> | Alternative `slug` field from the linked model. |
 
 #### Query Parameters
 
 | Name | Type | Description |
 |---|---|---|
-| `limit` | <ApiBadge kind="neutral" label="int" /> | Maximum number of records. Default: `50`. Min: `1`. Max: `100`. |
-| `cursor` | <ApiBadge kind="neutral" label="string" /> | Pagination cursor from a previous response. |
+| `limit` | <ApiBadge kind="neutral" label="int" /> | Optional. Maximum number of records. Default: `50`. Min: `1`. Max: `100`. |
+| `cursor` | <ApiBadge kind="neutral" label="string" /> | Optional. Pagination cursor from a previous response. |
 
 #### Headers
 
@@ -92,7 +103,7 @@ Response data depends on the `Platform`, `Crossplay`, and `Language` headers. Re
 | `Authorization` | <ApiBadge kind="auth" label="string" /> | JWT access token in the format `Bearer YourJWTAccessToken`. |
 | `Language` | <ApiBadge kind="i18n" label="Language" /> | Translation language. Default: `en`. |
 | `Platform` | <ApiBadge kind="neutral" label="Platform" /> | Platform context. Default: `pc`. |
-| `Crossplay` | <ApiBadge kind="crossplay" label="bool" /> | Crossplay context. Default: `true`. |
+| `Crossplay` | <ApiBadge kind="crossplay" label="bool" /> | Crossplay context. Default depends on endpoint behavior. |
 
 #### Body
 
@@ -108,9 +119,9 @@ Response data depends on the `Platform`, `Crossplay`, and `Language` headers. Re
 
 | Field | Type | Description |
 |---|---|---|
-| `name` | <ApiBadge kind="neutral" label="string" /> | Display name. Min: `3`. Max: `32`. |
-| `visible` | <ApiBadge kind="neutral" label="bool" /> | Whether the resource should be visible. |
-| `note` | <ApiBadge kind="neutral" label="string or null" /> | Optional. Note shown only to the owner. |
+| `name` | <ApiBadge kind="neutral" label="string" /> | Required. Display name. Min: `3`. Max: `32`. |
+| `visible` | <ApiBadge kind="neutral" label="bool" /> | Optional. Whether the resource should be visible. |
+| `note` | <ApiBadge kind="neutral" label="string or null" /> | Optional. Owner-only note. Send `null` to clear it. |
 
 #### Constraints
 
@@ -143,7 +154,38 @@ Response data depends on the `Platform`, `Crossplay`, and `Language` headers. Re
 | `visible` |  | <ApiBadge kind="neutral" label="bool" /> | Whether the resource is visible. |
 | `note` | <ApiBadge kind="auth" icon="👤" label="owner" /> | <ApiBadge kind="neutral" label="string or null" /> | Owner-only note. |
 
-## Multipart Endpoint
+## Model Response Example
+
+Use `ts` when the response body is schematic and refers to reusable models.
+
+<ApiEndpoint
+  method="GET"
+  path="/v2/examples"
+  summary="Get a list of example resources."
+  badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]}
+/>
+
+### Request
+
+#### URL Parameters
+
+None.
+
+### Response
+
+#### Body
+
+```ts
+{
+  apiVersion: "x.x.x",
+  data: Example[],
+  error: null,
+}
+```
+
+`data` is an array of linked reusable model shapes.
+
+## Multipart Endpoint Example
 
 <ApiEndpoint
   method="POST"
@@ -152,7 +194,6 @@ Response data depends on the `Platform`, `Crossplay`, and `Language` headers. Re
   badges={[
     {kind: 'auth', icon: '🔒', label: 'Auth required'},
     {kind: 'firstParty', icon: '◆', label: 'First-party only'},
-    {kind: 'danger', icon: '💔', label: 'Restricted surface'},
   ]}
 />
 
@@ -205,7 +246,7 @@ form-data; name="image"; filename="example.png"
 }
 ```
 
-## Empty Response
+## Empty Response Example
 
 <ApiEndpoint
   method="DELETE"
@@ -233,225 +274,76 @@ Empty response body with status code `200`.
 
 </ApiCallout>
 
-## List Endpoint
+## Copyable Skeleton
+
+Use this skeleton for a new endpoint.
+
+````mdx
+## Endpoint Name
 
 <ApiEndpoint
   method="GET"
-  path="/v2/examples"
-  summary="Get a list of example resources."
-  badges={[
-    {kind: 'i18n', icon: '🇬🇧', label: 'Language aware'},
-  ]}
-/>
-
-### Request
-
-#### URL Parameters
-
-None.
-
-#### Query Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| `featured` | <ApiBadge kind="neutral" label="bool" /> | Return only featured examples. |
-
-### Response
-
-#### Body
-
-```json
-{
-  "apiVersion": "x.x.x",
-  "data": [
-    {
-      "id": "example-id-1",
-      "name": "Example One"
-    },
-    {
-      "id": "example-id-2",
-      "name": "Example Two"
-    }
-  ],
-  "error": null
-}
-```
-
-## Orders Top Endpoint Draft
-
-<ApiEndpoint
-  method="GET"
-  path="/v2/orders/item/{slug}/top"
-  aliases={["/v2/orders/itemId/{itemId}/top"]}
-  summary="Get the top buy and sell orders for an item from online users."
-  badges={[
-    {kind: 'crossplay', icon: '🌀', label: 'Crossplay aware'},
-    {kind: 'neutral', icon: '⇅', label: 'Custom ranking'},
-  ]}
-/>
-
-Results depend on the `Platform` and `Crossplay` headers. The response contains up to five `sell` orders and up to five `buy` orders.
-
-Sell orders are ranked from the buyer's point of view: Endo listings first, then better Endo-per-platinum ratio for Endo listings, otherwise lower platinum-per-trade first.
-
-Buy orders are ranked from the seller's point of view: Endo listings first, then lower Endo-per-platinum ratio for Endo listings, otherwise higher platinum-per-trade first.
-
-### Request
-
-#### URL Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the `Item` or `ItemShort` model. |
-| `itemId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the `Item` or `ItemShort` model. |
-
-#### Query Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| `rank` | <ApiBadge kind="neutral" label="int" /> | Exact item rank. Accepted range: `0` to item max rank. Ignored when the item has no ranks or when `rankLt` is provided. |
-| `rankLt` | <ApiBadge kind="neutral" label="int" /> | Match ranks lower than this value. Accepted range: `1` to item max rank. Takes precedence over `rank`. |
-| `charges` | <ApiBadge kind="neutral" label="int" /> | Exact remaining charges. Accepted range: `0` to item max charges. Ignored when the item has no charges or when `chargesLt` is provided. |
-| `chargesLt` | <ApiBadge kind="neutral" label="int" /> | Match remaining charges lower than this value. Accepted range: `1` to item max charges. Takes precedence over `charges`. |
-| `amberStars` | <ApiBadge kind="neutral" label="int" /> | Exact amber star count. Accepted range: `0` to item max amber stars. Ignored when the item has no amber stars or when `amberStarsLt` is provided. |
-| `amberStarsLt` | <ApiBadge kind="neutral" label="int" /> | Match amber star counts lower than this value. Accepted range: `1` to item max amber stars. Takes precedence over `amberStars`. |
-| `cyanStars` | <ApiBadge kind="neutral" label="int" /> | Exact cyan star count. Accepted range: `0` to item max cyan stars. Ignored when the item has no cyan stars or when `cyanStarsLt` is provided. |
-| `cyanStarsLt` | <ApiBadge kind="neutral" label="int" /> | Match cyan star counts lower than this value. Accepted range: `1` to item max cyan stars. Takes precedence over `cyanStars`. |
-| `subtype` | <ApiBadge kind="neutral" label="string" /> | Exact item subtype. Must be one of the subtypes supported by the item. Ignored when the item has no subtypes. |
-
-### Response
-
-#### Body
-
-```json
-{
-  "apiVersion": "x.x.x",
-  "data": {
-    "sell": [
-      {
-        "id": "sell-order-id"
-      }
-    ],
-    "buy": [
-      {
-        "id": "buy-order-id"
-      }
-    ]
-  },
-  "error": null
-}
-```
-
-#### Data Fields
-
-| Field | Type | Description |
-|---|---|---|
-| `sell` | <ApiBadge kind="neutral" label="[]Order" /> | Up to five sell orders from online users, sorted from the buyer's point of view. |
-| `buy` | <ApiBadge kind="neutral" label="[]Order" /> | Up to five buy orders from online users, sorted from the seller's point of view. |
-
-## User Upload Avatar Draft
-
-<ApiEndpoint
-  method="POST"
-  path="/v2/me/avatar"
-  summary="Update your avatar."
+  path="/v2/example/{id}"
+  aliases={["/v2/exampleSlug/{slug}"]}
+  summary="Short behavior description."
   badges={[
     {kind: 'auth', icon: '🔒', label: 'Auth required'},
-    {kind: 'neutral', icon: '☁', label: 'Image upload'},
   ]}
 />
 
-The uploaded image is center-cropped to the target aspect ratio, resized to `256x256` pixels, encoded as WebP, and stored as the new avatar.
+<ApiCallout kind="warning" icon="🔒" title="Requires">
 
-### Request
-
-#### Body
-
-Content-Type: `multipart/form-data`
-
-```http
-form-data; name="avatar"; filename="whatever.png"
-```
-
-#### Body Fields
-
-| Field | Type | Description |
-|---|---|---|
-| `avatar` | <ApiBadge kind="neutral" label="file" /> | Image file to upload as the new avatar. |
-
-#### Constraints
-
-- Accepts image formats: `.png`, `.jpg`, `.jpeg`, `.webp`, `.gif`, `.bmp`, `.avif`.
-- Maximum upload size is `5 MiB`.
-
-### Response
-
-#### Body
-
-```json
-{
-  "apiVersion": "x.x.x",
-  "data": {
-    "id": "user-id",
-    "avatarUrl": "https://example.com/avatar.webp"
-  },
-  "error": null
-}
-```
-
-## User Upload Background Draft
-
-<ApiEndpoint
-  method="POST"
-  path="/v2/me/background"
-  summary="Update your profile background."
-  badges={[
-    {kind: 'auth', icon: '🔒', label: 'Auth required'},
-    {kind: 'firstParty', icon: '◆', label: 'Silver tier+'},
-    {kind: 'neutral', icon: '☁', label: 'Image upload'},
-  ]}
-/>
-
-<ApiCallout kind="info" icon="ℹ" title="Subscription Requirement">
-
-Requires the user to have at least a silver subscription tier.
+- Authentication
 
 </ApiCallout>
 
-The uploaded image is center-cropped to the target aspect ratio, resized to `1920x820` pixels, encoded as WebP, and stored as the new background.
-
 ### Request
+
+#### URL Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| `id` | <ApiBadge kind="neutral" label="string" /> | Parameter description. |
+
+#### Query Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| `limit` | <ApiBadge kind="neutral" label="int" /> | Optional. Default: `50`. |
 
 #### Body
 
-Content-Type: `multipart/form-data`
-
-```http
-form-data; name="background"; filename="whatever.png"
+```json
+{
+  "field": "value"
+}
 ```
 
 #### Body Fields
 
 | Field | Type | Description |
 |---|---|---|
-| `background` | <ApiBadge kind="neutral" label="file" /> | Image file to upload as the new background. |
-
-#### Constraints
-
-- Accepts image formats: `.png`, `.jpg`, `.jpeg`, `.webp`, `.gif`, `.bmp`, `.avif`.
-- Maximum upload size is `8 MiB`.
+| `field` | <ApiBadge kind="neutral" label="string" /> | Field description. |
 
 ### Response
 
 #### Body
 
-```json
+```ts
 {
-  "apiVersion": "x.x.x",
-  "data": {
-    "id": "user-id",
-    "backgroundUrl": "https://example.com/background.webp"
-  },
-  "error": null
+  apiVersion: "x.x.x",
+  data: Example,
+  error: null,
 }
 ```
+````
+
+## Do Not
+
+- Do not document routes that are not implemented.
+- Do not include HTTP methods in `aliases`.
+- Do not render loose badge rows before route text; use `ApiEndpoint`.
+- Do not use `json` for reusable model placeholders such as `"data": "Order"` or `"data": ["Order"]`; use `ts` and link the model.
+- Do not duplicate reusable model schemas on endpoint pages.
+- Do not create nested custom containers around every subsection.
+- Do not use old Notion-only color spans.

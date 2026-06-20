@@ -71,7 +71,6 @@ At the top of an MDX endpoint page, import only the components you use:
 
 ```mdx
 import ApiEndpoint, {ApiBadge, ApiCallout, BadgeGrid} from '@site/src/components/ApiEndpoint';
-import Admonition from '@theme/Admonition';
 ```
 
 If the right-side table of contents becomes noisy, keep it endpoint-only with front matter:
@@ -87,7 +86,7 @@ toc_max_heading_level: 2
 
 Each endpoint should follow this order exactly:
 
-```mdx
+````mdx
 ## Endpoint Name
 
 <ApiEndpoint
@@ -163,7 +162,7 @@ Each endpoint should follow this order exactly:
 | Field | Access | Type | Description |
 |---|---|---|---|
 | `id` |  | <ApiBadge kind="neutral" label="string" /> | Unique identifier. |
-```
+````
 
 Omit sections that do not apply. For example, a `GET` endpoint with no request body should not include `#### Body` or `#### Body Fields`.
 
@@ -215,14 +214,6 @@ Do not use raw Docusaurus directive blocks such as `:::warning` until directive 
 </ApiCallout>
 ```
 
-Use Docusaurus `Admonition` only when a built-in admonition is specifically desired:
-
-```mdx
-<Admonition type="info" title="Note">
-This is a rendered Docusaurus admonition.
-</Admonition>
-```
-
 ### Request And Response Rules
 
 - Use `### Request` and `### Response` as the two big sections inside each endpoint.
@@ -255,6 +246,7 @@ This is a rendered Docusaurus admonition.
 - Do not use Notion-only formatting or old color spans.
 - Do not make emojis the only source of meaning.
 - Do not include HTTP methods in alternative routes.
+- Do not render loose badge rows before route text; use `ApiEndpoint`.
 - Do not add decorative route icons unless the user asks.
 - Do not create nested container/card layouts around every subsection.
 - Do not duplicate large reusable schemas on endpoint pages; link shared models instead.

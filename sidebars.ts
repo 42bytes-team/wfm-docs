@@ -15,7 +15,6 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   docsSidebar: [
     'intro',
-    'data-models',
     {
       type: 'category',
       label: 'HTTP API',
@@ -32,11 +31,6 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'OAuth 2.0',
-      items: ['oauth/overview'],
-    },
-    {
-      type: 'category',
       label: 'WebSockets',
       items: [
         'websockets/overview',
@@ -48,13 +42,29 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Rules',
-      items: ['rules/overview'],
+      label: 'OAuth 2.0',
+      items: ['oauth/overview'],
     },
+    'data-models',
+    'rules/overview',
     {
       type: 'category',
       label: 'Contributing',
-      items: ['contributing/documentation-style', 'contributing/http-api-endpoint-format'],
+      items: [
+        'contributing/documentation-style',
+        'contributing/http-api-endpoint-format',
+        'contributing/websocket-message-format',
+        {
+          type: 'category',
+          label: 'Repositories',
+          items: [
+            'contributing/wfm-localization',
+            'contributing/wfm-items',
+            'contributing/wfm-electron',
+            'contributing/wfm-themes',
+          ],
+        },
+      ],
     },
   ],
 };
