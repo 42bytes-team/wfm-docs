@@ -58,13 +58,15 @@ Start the local docs site:
 yarn start
 ```
 
-This starts Docusaurus on `0.0.0.0:3001` and opens `http://docs.warframe.test/docs/intro` when the server is ready.
+This starts Docusaurus on `localhost:3000` and opens it in your browser.
 
-If you are not using the Warframe local Nginx setup, use the default Docusaurus local server instead:
+**Internal Warframe.market developers** who run the full local Docker stack with Nginx proxying should use:
 
 ```bash
-yarn start:local
+yarn start:wfm
 ```
+
+This starts Docusaurus on `0.0.0.0:3001` and opens `http://docs.warframe.test/docs/intro` when the server is ready.
 
 Build the static production site:
 

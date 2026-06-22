@@ -4,10 +4,9 @@
   "private": true,
   "packageManager": "yarn@4.14.1",
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "node scripts/start.js",
-    "start:no-open": "DOCS_OPEN=false node scripts/start.js",
-    "start:local": "docusaurus start --no-open",
+    "start": "docusaurus start --port 3000",
+    "start:wfm": "node scripts/start-wfm.js",
+    "start:wfm:no-open": "DOCS_OPEN=false node scripts/start-wfm.js",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

@@ -1,5 +1,6 @@
 const {execFile, spawn} = require('node:child_process');
 const http = require('node:http');
+const path = require('node:path');
 
 const host = process.env.DOCS_HOST || '0.0.0.0';
 const port = process.env.DOCS_PORT || '3001';
@@ -8,10 +9,10 @@ const openUrl = process.env.DOCS_OPEN_URL || 'http://docs.warframe.test/docs/int
 const healthUrl = `http://127.0.0.1:${port}/docs/intro`;
 const extraArgs = process.argv.slice(2).filter((arg) => arg !== '--');
 
-const yarnCommand = getYarnCommand();
-const child = spawn(yarnCommand.binary, [...yarnCommand.args, 'docusaurus', 'start', '--host', host, '--port', port, '--no-open', ...extraArgs], {
+const docusaurusBin = path.join(__dirname, '..', 'node_modules', '.bin', 'docusaurus');
+
+const child = spawn(docusaurusBin, ['start', '--host', host, '--port', port, '--no-open', ...extraArgs], {
   stdio: 'inherit',
-  shell: process.platform === 'win32',
 });
 
 child.on('exit', (code, signal) => {
@@ -94,12 +95,4 @@ function getOpenCommand() {
   }
 
   return null;
-}
-
-function getYarnCommand() {
-  if (process.env.npm_execpath) {
-    return {binary: process.env.npm_execpath, args: []};
-  }
-
-  return {binary: 'yarn', args: []};
 }

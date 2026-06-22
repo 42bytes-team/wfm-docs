@@ -26,13 +26,14 @@ yarn build
 
 ## Local Development
 
-- `yarn start` runs Docusaurus on `0.0.0.0:3001` and opens `docs.warframe.test` when ready.
-- `yarn start:no-open` runs the same dev server without opening a browser.
-- Use `yarn start --locale <locale>` or `yarn start:no-open --locale <locale>` for non-default locales.
-- Docusaurus dev mode serves one locale at a time. The `/ru/...` path exists in production builds, not default dev mode.
-- Set `DOCS_OPEN=false` to disable browser opening or `DOCS_OPEN_URL=...` to change the opened URL.
+- `yarn start` runs Docusaurus on `localhost:3000` and opens the browser (public contributor default).
+- `yarn start:wfm` runs on `0.0.0.0:3001` with health check, opens `docs.warframe.test` (internal devs only).
+- `yarn start:wfm:no-open` runs the same WFM dev server without opening a browser.
+- Use `yarn start --locale <locale>` for non-default locales.
+- Docusaurus dev mode serves one locale at a time. The `/ko/...` path exists in production builds, not default dev mode.
 - Local Nginx proxies `docs.warframe.test` to `host.docker.internal:3001`.
 - If the page is not reachable through Nginx, check that the Docusaurus dev server is running and that Nginx was reloaded after config changes.
+- `scripts/start-wfm.js` supports env vars: `DOCS_HOST`, `DOCS_PORT`, `DOCS_OPEN`, `DOCS_OPEN_URL` (see `scripts/README.md`).
 
 ## Editing Rules
 
