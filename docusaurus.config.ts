@@ -180,23 +180,44 @@ const config: Config = {
               label: 'WebSockets',
               to: '/docs/websockets/overview',
             },
+            {
+              label: 'OAuth 2.0',
+              to: '/docs/oauth/overview',
+            },
+            {
+              label: 'Data Models',
+              to: '/docs/data-models',
+            },
+            {
+              label: 'Rules',
+              to: '/docs/rules/overview',
+            },
           ],
         },
         {
           title: 'Project',
           items: [
             {
-              label: 'Website',
+              label: 'Warframe.market',
               href: 'https://warframe.market',
-            },
-            {
-              label: 'API',
-              href: 'https://api.warframe.market',
             },
             {
               label: 'GitHub',
               href: 'https://github.com/42bytes-team',
               className: 'footer-github-link',
+            },
+          ],
+        },
+        {
+          title: 'Contributing',
+          items: [
+            {
+              label: 'Guidelines',
+              to: '/docs/contributing/documentation-style',
+            },
+            {
+              label: 'Report an Issue',
+              href: 'https://github.com/42bytes-team/docs/issues',
             },
           ],
         },
