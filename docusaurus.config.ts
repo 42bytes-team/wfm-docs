@@ -109,6 +109,22 @@ const config: Config = {
     ],
   ],
 
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en', 'ko'],
+        indexDocs: true,
+        indexBlog: false,
+        highlightSearchTermsOnTargetPage: true,
+        removeDefaultStopWordFilter: true,
+        removeDefaultStemmer: true,
+        fuzzyMatchingDistance: 1,
+      },
+    ],
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/logo.png',
