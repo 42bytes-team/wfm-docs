@@ -82,13 +82,13 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'ru'],
+    locales: ['en', 'ko'],
     localeConfigs: {
       en: {
         label: 'English',
       },
-      ru: {
-        label: 'Русский',
+      ko: {
+        label: '한국어',
       },
     },
   },

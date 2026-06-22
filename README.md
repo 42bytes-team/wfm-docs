@@ -119,12 +119,12 @@ The automatic browser open uses the system opener: `xdg-open` on Linux, `open` o
 | `yarn docusaurus` | Runs the Docusaurus CLI directly. Useful for commands that do not have a package script yet. |
 | `yarn swizzle` | Copies selected Docusaurus theme components into this repo. Use carefully because swizzled components become maintenance burden. |
 | `yarn deploy` | Runs the Docusaurus deployment flow. Production deployment for this project is not configured here. |
-| `yarn write-translations` | Generates translation JSON files for a locale. Example: `yarn write-translations --locale ru`. |
+| `yarn write-translations` | Generates translation JSON files for a locale. Example: `yarn write-translations --locale <lang>`. |
 | `yarn write-heading-ids` | Adds explicit heading IDs to docs. Useful before translating or linking heavily. |
 
 ## Translations
 
-Docusaurus i18n is enabled with English as the default locale and Russian as an additional locale.
+Docusaurus i18n is enabled with English as the default locale and additional locales can be added.
 
 Translated docs live under this shape:
 
@@ -135,27 +135,27 @@ i18n/<locale>/docusaurus-plugin-content-docs/current/<doc-path>.md
 Example translated page:
 
 ```text
-i18n/ru/docusaurus-plugin-content-docs/current/intro.md
+i18n/<lang>/docusaurus-plugin-content-docs/current/intro.md
 ```
 
-Run the Russian dev site in development mode:
+Run the dev site for any locale in development mode:
 
 ```bash
-yarn start --locale ru
+yarn start --locale <lang>
 ```
 
 Without opening a browser:
 
 ```bash
-yarn start:no-open --locale ru
+yarn start:no-open --locale <lang>
 ```
 
-Docusaurus serves one selected locale at the root path in dev mode. `yarn start:no-open` serves the default English locale only, so `/ru/docs/intro` is not available from the dev server. Start with `--locale <locale>` to work on another language. After `yarn build`, non-default static builds are emitted under `build/<locale>`, so production-style serving uses paths like `/ru/docs/intro`.
+Docusaurus serves one selected locale at the root path in dev mode. `yarn start:no-open` serves the default English locale only, so `/<lang>/docs/intro` is not available from the dev server. Start with `--locale <lang>` to work on another language. After `yarn build`, non-default static builds are emitted under `build/<locale>`, so production-style serving uses paths like `/<lang>/docs/intro`.
 
-Generate translation message files for Russian:
+Generate translation message files for a locale:
 
 ```bash
-yarn write-translations --locale ru
+yarn write-translations --locale <lang>
 ```
 
 Translation guidance:

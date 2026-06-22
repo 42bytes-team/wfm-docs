@@ -1,0 +1,80 @@
+stages:
+  - test
+  - build
+  - deploy
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_MESSAGE =~ /-draft$/
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_TAG
+    - if: $CI_COMMIT_REF_PROTECTED == "true"
+
+.yarn_setup:
+  image: node:24-alpine
+  variables:
+    YARN_ENABLE_GLOBAL_CACHE: "false"
+  before_script:
+    - corepack enable
+    - corepack prepare yarn@4.14.1 --activate
+    - yarn install --immutable
+  cache:
+    - key:
+        files:
+          - yarn.lock
+      paths:
+        - .yarn/cache/
+
+test:
+  stage: test
+  extends: .yarn_setup
+  script:
+    - yarn typecheck
+    - yarn build
+
+build:
+  stage: build
+  extends: .yarn_setup
+  rules:
+    - if: $CI_COMMIT_TAG && $CI_COMMIT_REF_PROTECTED == "true"
+  script:
+    - yarn typecheck
+    - yarn build
+    - mv build docs_build_artifact
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - docs_build_artifact/
+
+deploy:
+  stage: deploy
+  image: alpine:latest
+  dependencies:
+    - build
+  rules:
+    - if: $CI_COMMIT_TAG && $CI_COMMIT_REF_PROTECTED == "true"
+      when: delayed
+      start_in: 30 minutes
+  before_script:
+    - apk update && apk add openssh-client rsync
+    - ': "${DEPLOY_SSH_HOST:?DEPLOY_SSH_HOST is required}"'
+    - ': "${DEPLOY_SSH_PORT:?DEPLOY_SSH_PORT is required}"'
+    - ': "${DEPLOY_SSH_USER:?DEPLOY_SSH_USER is required}"'
+    - ': "${DEPLOY_SSH_KEY_B64:?DEPLOY_SSH_KEY_B64 is required}"'
+    - ': "${DEPLOY_SSH_KNOWN_HOSTS_B64:?DEPLOY_SSH_KNOWN_HOSTS_B64 is required}"'
+    - ': "${DEPLOY_TARGET_DIR:?DEPLOY_TARGET_DIR is required}"'
+    - ': "${DEPLOY_COMMAND:?DEPLOY_COMMAND is required}"'
+    - echo "$DEPLOY_SSH_KEY_B64" | base64 -d > /tmp/deploy_key
+    - chmod 600 /tmp/deploy_key
+    - eval "$(ssh-agent -s)"
+    - ssh-add /tmp/deploy_key
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$DEPLOY_SSH_KNOWN_HOSTS_B64" | base64 -d > ~/.ssh/known_hosts
+    - chmod 600 ~/.ssh/known_hosts
+  script:
+    - mv docs_build_artifact build
+    - ssh -p "$DEPLOY_SSH_PORT" "$DEPLOY_SSH_USER@$DEPLOY_SSH_HOST" "mkdir -p '$DEPLOY_TARGET_DIR'"
+    - rsync -rvtu --delete --exclude '*.map' -e "ssh -p $DEPLOY_SSH_PORT" ./build/ "$DEPLOY_SSH_USER@$DEPLOY_SSH_HOST:$DEPLOY_TARGET_DIR/"
+    - ssh -p "$DEPLOY_SSH_PORT" "$DEPLOY_SSH_USER@$DEPLOY_SSH_HOST" "$DEPLOY_COMMAND"
