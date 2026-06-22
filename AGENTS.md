@@ -28,7 +28,11 @@ If more than one skill applies, read all relevant skills. More specific instruct
 4. Keep diffs small. Do not rewrite broad sections when a targeted edit solves the task.
 5. Keep examples copyable. JSON examples must be valid enough for readers to understand the shape.
 6. Use stable headings and simple tables so future LLM updates and reviews are reliable.
-7. Run the smallest relevant verification: usually `yarn build`, `yarn typecheck`, or both.
+7. Always run `yarn typecheck` — it's fast and safe to run anytime.
+   Then also run `yarn build` to verify the site compiles, unless the dev server is already active:
+   check with `curl -s -o /dev/null -w "%{http_code}" http://localhost:3000`.
+   If it returns 200, skip the build (the dev server hot-reload already reflects changes).
+   Never run `yarn build` while the dev server is active — they share the `.docusaurus` cache and will corrupt the dev server state.
 
 ## Public Contributors
 
