@@ -38,8 +38,8 @@ type WsMessageProps = {
 
 export function ApiBadge({icon, kind = 'neutral', label}: EndpointBadge) {
   return (
-    <span className={`api-badge api-badge--${kind}`}>
-      {icon ? <span className="api-badge__icon" aria-hidden="true">{icon}</span> : null}
+    <span className={`doc-badge doc-badge--${kind}`}>
+      {icon ? <span className="doc-badge__icon" aria-hidden="true">{icon}</span> : null}
       <span>{label}</span>
     </span>
   );
@@ -47,7 +47,7 @@ export function ApiBadge({icon, kind = 'neutral', label}: EndpointBadge) {
 
 export function BadgeGrid({badges}: BadgeGridProps) {
   return (
-    <div className="api-badge-grid">
+    <div className="doc-badge-grid">
       {badges.map((badge) => (
         <ApiBadge key={`${badge.kind ?? 'neutral'}-${badge.label}`} {...badge} />
       ))}
@@ -57,21 +57,21 @@ export function BadgeGrid({badges}: BadgeGridProps) {
 
 export function ApiCallout({children, icon, kind = 'neutral', title}: ApiCalloutProps) {
   return (
-    <aside className={`api-callout api-callout--${kind}`}>
-      <div className="api-callout__heading">
-        {icon ? <span className="api-callout__icon" aria-hidden="true">{icon}</span> : null}
+    <aside className={`doc-callout doc-callout--${kind}`}>
+      <div className="doc-callout__heading">
+        {icon ? <span className="doc-callout__icon" aria-hidden="true">{icon}</span> : null}
         <strong>{title}</strong>
       </div>
-      <div className="api-callout__content">{children}</div>
+      <div className="doc-callout__content">{children}</div>
     </aside>
   );
 }
 
 export function WsMessage({badges = [], route, summary, type}: WsMessageProps) {
   return (
-    <section className="ws-message">
-      <div className="ws-message__route">
-        <span className={`ws-message__type ws-message__type--${type.toLowerCase()}`}>{type}</span>
+    <section className="doc-message">
+      <div className="doc-message__route">
+        <span className={`doc-message__type doc-message__type--${type.toLowerCase()}`}>{type}</span>
         <code>{route}</code>
       </div>
       <p>{summary}</p>
@@ -82,15 +82,15 @@ export function WsMessage({badges = [], route, summary, type}: WsMessageProps) {
 
 export default function ApiEndpoint({aliases = [], badges = [], method, path, summary}: EndpointProps) {
   return (
-    <section className="api-endpoint">
-      <div className="api-endpoint__main">
-        <div className="api-endpoint__copy">
-          <div className="api-endpoint__route">
-            <span className={`api-method api-method--${method.toLowerCase()}`}>{method}</span>
+    <section className="doc-endpoint">
+      <div className="doc-endpoint__main">
+        <div className="doc-endpoint__copy">
+          <div className="doc-endpoint__route">
+            <span className={`doc-method doc-method--${method.toLowerCase()}`}>{method}</span>
             <code>{path}</code>
           </div>
           {aliases.length > 0 ? (
-            <div className="api-endpoint__aliases" aria-label="Route aliases">
+            <div className="doc-endpoint__aliases" aria-label="Route aliases">
               <span>Alternative</span>
               {aliases.map((alias) => <code key={alias}>{alias}</code>)}
             </div>

@@ -1,0 +1,57 @@
+/** Doc callout component. */
+
+.doc-callout {
+  margin: 1rem 0;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--outline-divider);
+  border-left-width: 4px;
+  border-radius: 14px;
+  background: var(--bg-surface-primary);
+  box-shadow: 0 10px 28px var(--card-shadow);
+}
+
+.doc-callout__heading {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  margin-bottom: 0.35rem;
+  color: var(--text-primary);
+}
+
+.doc-callout__icon {
+  display: inline-grid;
+  width: 1.35rem;
+  height: 1.35rem;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  line-height: 1;
+}
+
+.doc-callout__content > :last-child {
+  margin-bottom: 0;
+}
+
+.doc-callout--info {
+  border-left-color: var(--color-callout-info);
+  background: linear-gradient(90deg, rgba(52, 171, 214, 0.12), transparent), var(--bg-surface-primary);
+}
+
+.doc-callout--warning {
+  border-left-color: var(--color-callout-warning);
+  background: linear-gradient(90deg, rgba(240, 200, 112, 0.14), transparent), var(--bg-surface-primary);
+}
+
+.doc-callout--danger {
+  border-left-color: var(--color-callout-danger);
+  background: linear-gradient(90deg, rgba(255, 107, 107, 0.14), transparent), var(--bg-surface-primary);
+}
+
+.doc-callout--success {
+  border-left-color: var(--color-callout-success);
+  background: linear-gradient(90deg, rgba(19, 193, 144, 0.13), transparent), var(--bg-surface-primary);
+}
+
+.doc-callout--neutral {
+  border-left-color: var(--outline-medium);
+}

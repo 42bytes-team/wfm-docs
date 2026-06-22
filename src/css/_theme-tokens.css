@@ -1,0 +1,238 @@
+/**
+ * Theme tokens.
+ *
+ * Section 1 — Raw light/dark tokens (defined in :root so they exist in both modes).
+ * Section 2 — Active theme aliases (switched by [data-theme='dark']).
+ * Section 3 — Infima/Docusaurus variable mapping.
+ * Section 4 — Component-only variables (not mapped to Infima).
+ */
+
+/* ============================================================
+ * Section 1 — Raw tokens
+ * ============================================================ */
+
+:root {
+  /* Light theme */
+  --light-bg-screen: #f6efe1;
+  --light-bg-surface-primary: #ffffff;
+  --light-bg-surface-secondary: #f0e4ce;
+  --light-bg-bottom-menu: #061218;
+  --light-bg-field-primary: #ffffff;
+  --light-text-primary: #0a0a0b;
+  --light-text-secondary: #263941;
+  --light-text-unfocused: #5f7078;
+  --light-text-inverse: #0a0a0b;
+  --light-outline-divider: rgba(10, 24, 32, 0.16);
+  --light-outline-medium: #7a9aa5;
+  --light-outline-medium-focus: #0a0a0b;
+  --light-link: #8f5600;
+  --light-link-hover: #6f4300;
+  --light-link-active: #0a0a0b;
+  --light-card-shadow: rgba(10, 24, 32, 0.16);
+  --light-hero-glow-primary: rgba(240, 200, 112, 0.32);
+  --light-hero-glow-secondary: rgba(255, 196, 96, 0.22);
+  --light-sidebar-bg: rgba(255, 255, 255, 0.70);
+  --light-accent-light: #ffdfa6;
+  --light-accent-dark: #e6b85e;
+  --light-accent-focus: #ffffff;
+  --light-accent-highlight: #f0c870;
+  --light-accent-gradient-end: #fafafa;
+  --light-outline-dark: #5a6e78;
+  --light-gradient-one: #13c190;
+  --light-gradient-two: #f0c870;
+  --light-gradient-three: #34abd6;
+  --light-code-block-bg: var(--light-bg-field-primary);
+
+  /* Dark theme */
+  --dark-bg-screen: #0a1820;
+  --dark-bg-surface-primary: #061218;
+  --dark-bg-surface-secondary: #162229;
+  --dark-bg-bottom-menu: #050f14;
+  --dark-bg-field-primary: #110c03;
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: #b8c4cc;
+  --dark-text-unfocused: #788890;
+  --dark-text-inverse: #0a0a0b;
+  --dark-outline-divider: rgba(255, 255, 255, 0.1);
+  --dark-outline-medium: #7a9aa5;
+  --dark-outline-medium-focus: #ffffff;
+  --dark-outline-dark: #464e50;
+  --dark-gradient-one: #13c190;
+  --dark-gradient-two: #f0c870;
+  --dark-gradient-three: #34abd6;
+  --dark-accent-light: #ffdfa6;
+  --dark-accent-dark: #e6b85e;
+  --dark-accent-focus: #ffffff;
+  --dark-accent-highlight: #f0c870;
+  --dark-accent-gradient-end: #fafafa;
+  --dark-link: #bf8734;
+  --dark-link-hover: var(--dark-accent-light);
+  --dark-link-active: var(--dark-accent-focus);
+  --dark-card-shadow: rgba(2, 19, 26, 0.48);
+  --dark-hero-glow-primary: rgba(240, 200, 112, 0.18);
+  --dark-hero-glow-secondary: rgba(255, 196, 96, 0.12);
+  --dark-sidebar-bg: rgba(6, 18, 24, 0.58);
+  --dark-code-block-bg: var(--dark-bg-field-primary);
+
+  /* ============================================================
+   * Section 2 — Active theme aliases (light defaults)
+   * ============================================================ */
+  --bg-screen: var(--light-bg-screen);
+  --bg-surface-primary: var(--light-bg-surface-primary);
+  --bg-surface-secondary: var(--light-bg-surface-secondary);
+  --bg-bottom-menu: var(--light-bg-bottom-menu);
+  --bg-field-primary: var(--light-bg-field-primary);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --text-unfocused: var(--light-text-unfocused);
+  --text-inverse: var(--light-text-inverse);
+  --outline-divider: var(--light-outline-divider);
+  --outline-medium: var(--light-outline-medium);
+  --outline-medium-focus: var(--light-outline-medium-focus);
+  --accent-light: var(--light-accent-light);
+  --accent-dark: var(--light-accent-dark);
+  --accent-focus: var(--light-accent-focus);
+  --accent-highlight: var(--light-accent-highlight);
+  --accent-gradient-end: var(--light-accent-gradient-end);
+  --link: var(--light-link);
+  --link-hover: var(--light-link-hover);
+  --link-active: var(--light-link-active);
+  --code-block-bg: var(--light-code-block-bg);
+  --card-shadow: var(--light-card-shadow);
+  --hero-glow-primary: var(--light-hero-glow-primary);
+  --hero-glow-secondary: var(--light-hero-glow-secondary);
+  --sidebar-bg: var(--light-sidebar-bg);
+  --outline-dark: var(--light-outline-dark);
+  --gradient-one: var(--light-gradient-one);
+  --gradient-two: var(--light-gradient-two);
+  --gradient-three: var(--light-gradient-three);
+
+  /* ============================================================
+   * Section 3 — Infima/Docusaurus mapping (light defaults)
+   * ============================================================ */
+  --ifm-background-color: var(--bg-screen);
+  --ifm-background-surface-color: var(--bg-surface-primary);
+  --ifm-color-content: var(--text-secondary);
+  --ifm-color-content-secondary: var(--text-unfocused);
+  --ifm-color-primary: var(--accent-dark);
+  --ifm-color-primary-light: var(--accent-light);
+  --ifm-code-background: var(--bg-field-primary);
+  --ifm-code-font-size: 95%;
+  --ifm-footer-background-color: var(--bg-bottom-menu);
+  --ifm-heading-color: var(--text-primary);
+  --ifm-link-color: var(--link);
+  --ifm-link-hover-color: var(--link-hover);
+  --ifm-navbar-background-color: var(--bg-surface-primary);
+  --ifm-navbar-link-color: var(--text-secondary);
+  --ifm-navbar-link-hover-color: var(--link-hover);
+  --ifm-table-border-color: var(--outline-divider);
+  --ifm-toc-border-color: var(--outline-divider);
+  --docusaurus-highlighted-code-line-bg: rgba(19, 193, 144, 0.14);
+}
+
+/* ============================================================
+ * Section 3 (dark overrides) — Infima/Docusaurus mapping
+ * ============================================================ */
+
+[data-theme='dark'] {
+  --ifm-background-surface-color: var(--bg-surface-secondary);
+  --ifm-navbar-background-color: var(--bg-bottom-menu);
+  --ifm-table-border-color: var(--outline-dark);
+}
+
+/* ============================================================
+ * Section 4 — Component-only variables
+ * ============================================================ */
+
+:root {
+
+  /* Method badges */
+  --color-method-get: #34abd6;
+  --color-method-post: #b994ff;
+  --color-method-patch: #13c190;
+  --color-method-delete: #ff6b6b;
+  --color-method-text: #071318;
+
+  /* WebSocket message type badges */
+  --color-msg-command: #b994ff;
+  --color-msg-event: #34abd6;
+  --color-msg-stream: #13c190;
+  --color-msg-error: #ff6b6b;
+  --color-msg-text: #071318;
+
+  /* Callout variants */
+  --color-callout-info: #34abd6;
+  --color-callout-warning: #f0c870;
+  --color-callout-danger: #ff6b6b;
+  --color-callout-success: #13c190;
+
+  /* Badge variants */
+  --color-badge-auth: rgba(255, 223, 166, 0.35);
+  --color-badge-auth-bg: rgba(255, 223, 166, 0.13);
+  --color-badge-i18n: rgba(52, 171, 214, 0.35);
+  --color-badge-i18n-bg: rgba(52, 171, 214, 0.13);
+  --color-badge-crossplay: rgba(185, 148, 255, 0.38);
+  --color-badge-crossplay-bg: rgba(185, 148, 255, 0.14);
+  --color-badge-cache: rgba(19, 193, 144, 0.38);
+  --color-badge-cache-bg: rgba(19, 193, 144, 0.13);
+  --color-badge-accessibility: rgba(240, 200, 112, 0.42);
+  --color-badge-accessibility-bg: rgba(240, 200, 112, 0.14);
+  --color-badge-firstparty: rgba(255, 160, 95, 0.42);
+  --color-badge-firstparty-bg: rgba(255, 160, 95, 0.14);
+  --color-badge-danger: rgba(255, 107, 107, 0.42);
+  --color-badge-danger-bg: rgba(255, 107, 107, 0.14);
+
+  /* Endpoint gradient top bar */
+  --endpoint-topbar-gradient: linear-gradient(90deg, var(--gradient-one), var(--gradient-two), var(--gradient-three));
+
+  /* Message gradient top bar */
+  --message-topbar-gradient: linear-gradient(90deg, var(--gradient-three), #b994ff, var(--gradient-two));
+
+  /* Menu hover */
+  --menu-hover-bg: rgba(230, 184, 94, 0.14);
+
+  /* Table header gradient */
+  --table-head-gradient: linear-gradient(90deg, rgba(19, 193, 144, 0.14), rgba(240, 200, 112, 0.12));
+
+  /* Table even row */
+  --table-even-row-bg: rgba(122, 154, 165, 0.08);
+
+  /* Logo glow */
+  --logo-glow: drop-shadow(0 0 12px rgba(240, 200, 112, 0.22));
+}
+
+/* ============================================================
+ * Section 2 (dark overrides) — Active theme aliases
+ * ============================================================ */
+
+[data-theme='dark'] {
+  --bg-screen: var(--dark-bg-screen);
+  --bg-surface-primary: var(--dark-bg-surface-primary);
+  --bg-surface-secondary: var(--dark-bg-surface-secondary);
+  --bg-bottom-menu: var(--dark-bg-bottom-menu);
+  --bg-field-primary: var(--dark-bg-field-primary);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --text-unfocused: var(--dark-text-unfocused);
+  --text-inverse: var(--dark-text-inverse);
+  --outline-divider: var(--dark-outline-divider);
+  --outline-medium: var(--dark-outline-medium);
+  --outline-medium-focus: var(--dark-outline-medium-focus);
+  --accent-light: var(--dark-accent-light);
+  --accent-dark: var(--dark-accent-dark);
+  --accent-focus: var(--dark-accent-focus);
+  --accent-highlight: var(--dark-accent-highlight);
+  --accent-gradient-end: var(--dark-accent-gradient-end);
+  --link: var(--dark-link);
+  --link-hover: var(--dark-link-hover);
+  --link-active: var(--dark-link-active);
+  --code-block-bg: var(--dark-code-block-bg);
+  --card-shadow: var(--dark-card-shadow);
+  --hero-glow-primary: var(--dark-hero-glow-primary);
+  --hero-glow-secondary: var(--dark-hero-glow-secondary);
+  --sidebar-bg: var(--dark-sidebar-bg);
+  --outline-dark: var(--dark-outline-dark);
+  --gradient-one: var(--dark-gradient-one);
+  --gradient-two: var(--dark-gradient-two);
+  --gradient-three: var(--dark-gradient-three);
+}

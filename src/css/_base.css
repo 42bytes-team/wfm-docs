@@ -1,0 +1,25 @@
+/** Base element styles. */
+
+html,
+body {
+  background: var(--bg-screen);
+}
+
+a {
+  color: var(--link);
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration-thickness: 2px;
+}
+
+a:active {
+  color: var(--link-active);
+}
+
+table code,
+li code,
+p code {
+  white-space: nowrap;
+}

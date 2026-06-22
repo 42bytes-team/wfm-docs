@@ -1,0 +1,79 @@
+/** Layout elements: navbar, footer, main wrapper, sidebar, TOC. */
+
+.button.button--primary {
+  --ifm-button-background-color: transparent;
+  --ifm-button-border-color: transparent;
+  background: linear-gradient(90deg, var(--accent-highlight) 0%, var(--accent-gradient-end) 100%);
+  border: 0;
+  color: var(--text-inverse);
+}
+
+.button.button--primary:hover,
+.button.button--primary:focus {
+  background: linear-gradient(90deg, var(--accent-light) 0%, var(--accent-focus) 100%);
+  color: var(--text-inverse);
+}
+
+.button.button--secondary {
+  --ifm-button-background-color: transparent;
+  --ifm-button-border-color: var(--outline-medium);
+  background: transparent;
+  border-color: var(--outline-medium);
+  color: var(--text-primary);
+}
+
+.button.button--secondary:hover,
+.button.button--secondary:focus {
+  --ifm-button-border-color: var(--outline-medium-focus);
+  border-color: var(--outline-medium-focus);
+  color: var(--text-primary);
+}
+
+.navbar {
+  border-bottom: 1px solid var(--outline-divider);
+}
+
+.footer,
+.footer--dark {
+  --ifm-footer-background-color: var(--bg-bottom-menu);
+  background-color: var(--bg-bottom-menu);
+}
+
+.navbar__brand {
+  font-weight: 700;
+}
+
+.navbar__logo {
+  height: 2.25rem;
+  margin-right: 0.65rem;
+}
+
+.navbar__logo img {
+  filter: var(--logo-glow);
+}
+
+.main-wrapper {
+  background:
+    radial-gradient(circle at top right, rgba(19, 193, 144, 0.11), transparent 30rem),
+    linear-gradient(180deg, var(--bg-screen) 0%, var(--bg-surface-primary) 100%);
+}
+
+.theme-doc-sidebar-container,
+.theme-doc-toc-desktop {
+  background: var(--sidebar-bg);
+}
+
+.theme-doc-markdown,
+.card,
+.pagination-nav__link {
+  color: var(--text-secondary);
+}
+
+.table-of-contents__link--active,
+.menu__link--active {
+  color: var(--link-hover);
+}
+
+.menu__link:hover {
+  background: var(--menu-hover-bg);
+}
