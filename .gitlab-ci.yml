@@ -75,6 +75,5 @@ deploy:
     - chmod 600 ~/.ssh/known_hosts
   script:
     - mv docs_build_artifact build
-    - ssh -p "$DEPLOY_SSH_PORT" "$DEPLOY_SSH_USER@$DEPLOY_SSH_HOST" "mkdir -p '$DEPLOY_TARGET_DIR'"
-    - rsync -rvtu --delete --exclude '*.map' -e "ssh -p $DEPLOY_SSH_PORT" ./build/ "$DEPLOY_SSH_USER@$DEPLOY_SSH_HOST:$DEPLOY_TARGET_DIR/"
-    - ssh -p "$DEPLOY_SSH_PORT" "$DEPLOY_SSH_USER@$DEPLOY_SSH_HOST" "$DEPLOY_COMMAND"
+    - rsync -rvtu --delete --exclude '*.map' -e "ssh -p $DEPLOY_SSH_PORT" ./build/ "$DEPLOY_SSH_USER@$DEPLOY_SSH_HOST:$DEPLOY_TARGET_DIR"
+    # - ssh -p "$DEPLOY_SSH_PORT" "$DEPLOY_SSH_USER@$DEPLOY_SSH_HOST" "$DEPLOY_COMMAND"
