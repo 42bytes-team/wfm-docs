@@ -300,6 +300,21 @@ yarn typecheck
 
 If only `.agents/skills/...` files changed, no Docusaurus verification is required.
 
+## Updating WebSocket Version
+
+The docs reference the current WebSocket backend version in `docs/websockets/overview.mdx`.
+
+- Look for the line: `This documentation describes WebSocket API version \`vX.Y.Z\`.`
+- Get the latest WebSocket tag from the backend repo:
+  ```bash
+  git -C ../Api tag --list 'ws/v*' --sort=-v:refname | head -1
+  ```
+  This returns something like `ws/v0.13.0`. Extract `0.13.0` and update the docs line.
+
+If `../Api` does not exist, ask the user for the backend repository path. Do not guess version numbers.
+
+See also `.agents/skills/api-documentation/SKILL.md` → "Updating Backend Versions" for the full workflow (includes API version as well).
+
 ## Final Response
 
 When done, report:

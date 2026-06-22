@@ -35,6 +35,38 @@ Update docs when public behavior changes:
 
 If a code change is internal only, state that no public docs update was needed.
 
+## Updating Backend Versions
+
+The docs reference the current backend version in overview pages. Update these when a new backend tag is released.
+
+### API Version
+
+- Docs file: `docs/api/overview.mdx`
+- Look for the line: `This documentation describes API version \`vX.Y.Z\`.`
+- Get the latest API tag from the backend repo:
+  ```bash
+  git -C ../Api tag --list 'web/v*' --sort=-v:refname | head -1
+  ```
+  This returns something like `web/v0.25.0`. Extract `0.25.0` and update the docs line to:
+  ```
+  This documentation describes API version `v0.25.0`.
+  ```
+
+### WebSocket Version
+
+- Docs file: `docs/websockets/overview.mdx`
+- Look for the line: `This documentation describes WebSocket API version \`vX.Y.Z\`.`
+- Get the latest WebSocket tag from the backend repo:
+  ```bash
+  git -C ../Api tag --list 'ws/v*' --sort=-v:refname | head -1
+  ```
+  This returns something like `ws/v0.13.0`. Extract `0.13.0` and update the docs line to:
+  ```
+  This documentation describes WebSocket API version `v0.13.0`.
+  ```
+
+If `../Api` does not exist, ask the user for the backend repository path. Do not guess version numbers.
+
 ## Source Evidence Checklist
 
 - HTTP routes: route registration, handler, request DTO, validation, response construction, service method, tests.
