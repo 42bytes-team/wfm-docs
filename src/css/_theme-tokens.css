@@ -77,34 +77,83 @@
   /* ============================================================
    * Section 2 — Active theme aliases (light defaults)
    * ============================================================ */
+
+  /* Backgrounds */
+  /* html body background */
   --bg-screen: var(--light-bg-screen);
+  /* card bg, navbar bg, dropdown bg, hero section bg */
   --bg-surface-primary: var(--light-bg-surface-primary);
+  /* card bg (dark mode), hero gradient */
   --bg-surface-secondary: var(--light-bg-surface-secondary);
+  /* footer bg, navbar bg (dark mode), hero gradient */
   --bg-bottom-menu: var(--light-bg-bottom-menu);
+  /* inline code bg, <pre> bg, endpoint/message code chips */
   --bg-field-primary: var(--light-bg-field-primary);
+
+  /* Text */
+  /* h1-h6 headings, button text, hero title */
   --text-primary: var(--light-text-primary);
+  /* body text color, navbar links, sidebar text, table cells */
   --text-secondary: var(--light-text-secondary);
+  /* muted text, TOC links, endpoint aliases, pagination sublabel */
   --text-unfocused: var(--light-text-unfocused);
+  /* button text on accent backgrounds */
   --text-inverse: var(--light-text-inverse);
+
+  /* Outlines */
+  /* table borders, TOC border, navbar bottom border, code chip borders */
   --outline-divider: var(--light-outline-divider);
+  /* secondary button border, neutral callout left border */
   --outline-medium: var(--light-outline-medium);
+  /* secondary button border on hover/focus */
   --outline-medium-focus: var(--light-outline-medium-focus);
-  --accent-light: var(--light-accent-light);
-  --accent-dark: var(--light-accent-dark);
-  --accent-focus: var(--light-accent-focus);
-  --accent-highlight: var(--light-accent-highlight);
-  --accent-gradient-end: var(--light-accent-gradient-end);
-  --link: var(--light-link);
-  --link-hover: var(--light-link-hover);
-  --link-active: var(--light-link-active);
-  --code-block-bg: var(--light-code-block-bg);
-  --card-shadow: var(--light-card-shadow);
-  --hero-glow-primary: var(--light-hero-glow-primary);
-  --hero-glow-secondary: var(--light-hero-glow-secondary);
-  --sidebar-bg: var(--light-sidebar-bg);
+  /* table borders (dark mode) */
   --outline-dark: var(--light-outline-dark);
+
+  /* Accent */
+  /* primary button gradient start, Ask AI hover */
+  --accent-light: var(--light-accent-light);
+  /* default link color, active breadcrumb, footer link hover, card hover border */
+  --accent-dark: var(--light-accent-dark);
+  /* primary button gradient end on hover/focus */
+  --accent-focus: var(--light-accent-focus);
+  /* secondary button gradient start */
+  --accent-highlight: var(--light-accent-highlight);
+  /* secondary button gradient end */
+  --accent-gradient-end: var(--light-accent-gradient-end);
+
+  /* Links */
+  /* <a> default color, link-style buttons, active nav link */
+  --link: var(--light-link);
+  /* <a:hover>, link button hover, navbar link hover */
+  --link-hover: var(--light-link-hover);
+  /* <a:active> */
+  --link-active: var(--light-link-active);
+
+  /* Code */
+  /* prism code block background */
+  --code-block-bg: var(--light-code-block-bg);
+
+  /* Shadows */
+  /* table shadow, card shadow, admonition shadow */
+  --card-shadow: var(--light-card-shadow);
+
+  /* Hero */
+  /* hero banner radial glow (top-left) */
+  --hero-glow-primary: var(--light-hero-glow-primary);
+  /* hero banner radial glow (top-right) */
+  --hero-glow-secondary: var(--light-hero-glow-secondary);
+
+  /* Sidebar */
+  /* doc sidebar bg, desktop TOC bg */
+  --sidebar-bg: var(--light-sidebar-bg);
+
+  /* Gradients */
+  /* endpoint top bar gradient (stop 1), message gradient */
   --gradient-one: var(--light-gradient-one);
+  /* endpoint top bar gradient (stop 2), message gradient (stop 3) */
   --gradient-two: var(--light-gradient-two);
+  /* endpoint top bar gradient (stop 3), message gradient (stop 1) */
   --gradient-three: var(--light-gradient-three);
 
   /* ============================================================
