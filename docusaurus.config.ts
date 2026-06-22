@@ -72,7 +72,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'warframe-market',
+  organizationName: '42bytes-team',
   projectName: 'docs',
 
   onBrokenLinks: 'throw',
@@ -151,7 +151,7 @@ const config: Config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/warframe-market',
+            href: 'https://github.com/42bytes-team',
             label: 'GitHub',
             position: 'right',
             className: 'header-github-link',
@@ -195,7 +195,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/warframe-market',
+              href: 'https://github.com/42bytes-team',
               className: 'footer-github-link',
             },
           ],

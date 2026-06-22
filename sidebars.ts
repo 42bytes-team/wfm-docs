@@ -62,6 +62,7 @@ const sidebars: SidebarsConfig = {
             'contributing/wfm-items',
             'contributing/wfm-electron',
             'contributing/wfm-themes',
+            'contributing/wfm-docs',
           ],
         },
       ],
