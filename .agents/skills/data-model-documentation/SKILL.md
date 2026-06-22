@@ -126,18 +126,18 @@ Do not mark a field optional only because its Go zero value could be empty. Use 
 
 Use these public docs types:
 
-| Go type | Docs type |
-|---|---|
-| `string` | `string` |
-| `bool`, `*bool` | `boolean` |
-| `int`, `int32`, `int64`, `uint32`, `uint64` | `int` |
-| `float32`, `float64` | `number` |
-| `[]string` | `[]string` or `string[]`; keep existing page style if already present. |
-| `[]Type` | `[]Type` or `Type[]`; keep existing page style if already present. |
-| `map[string]Type` | `map[string]Type` |
-| `map[string]*Type` | `map[string]Type` |
-| `*Type` | `Type`; add `optional/contextual` flag. |
-| `any`, `interface{}` | `object`, unless code proves a stricter shape. |
+| Go type                                     | Docs type                                                              |
+| ------------------------------------------- | ---------------------------------------------------------------------- |
+| `string`                                    | `string`                                                               |
+| `bool`, `*bool`                             | `boolean`                                                              |
+| `int`, `int32`, `int64`, `uint32`, `uint64` | `int`                                                                  |
+| `float32`, `float64`                        | `number`                                                               |
+| `[]string`                                  | `[]string` or `string[]`; keep existing page style if already present. |
+| `[]Type`                                    | `[]Type` or `Type[]`; keep existing page style if already present.     |
+| `map[string]Type`                           | `map[string]Type`                                                      |
+| `map[string]*Type`                          | `map[string]Type`                                                      |
+| `*Type`                                     | `Type`; add `optional/contextual` flag.                                |
+| `any`, `interface{}`                        | `object`, unless code proves a stricter shape.                         |
 
 Do not expose Go-only package names, protobuf names, or pointer syntax in public docs.
 
@@ -184,7 +184,7 @@ toc_max_heading_level: 2
 Required import pattern:
 
 ```mdx
-import {ApiBadge, ApiCallout, BadgeGrid} from '@site/src/components/ApiEndpoint';
+import { ApiBadge, ApiCallout, BadgeGrid } from '@site/src/components/ApiEndpoint';
 ```
 
 Top-level models use `## ModelName`.
@@ -194,9 +194,9 @@ Nested models use `### NestedModelName` under their parent model.
 Field tables use this exact shape:
 
 ```mdx
-| Field | Flags | Type | Description |
-|---|---|---|---|
-| `id` |  | <ApiBadge kind="neutral" label="string" /> | Unique identifier. |
+| Field    | Flags                                                   | Type                                       | Description        |
+| -------- | ------------------------------------------------------- | ------------------------------------------ | ------------------ |
+| `id`     |                                                         | <ApiBadge kind="neutral" label="string" /> | Unique identifier. |
 | `avatar` | <ApiBadge kind="neutral" label="optional/contextual" /> | <ApiBadge kind="neutral" label="string" /> | Avatar image path. |
 ```
 
@@ -235,28 +235,28 @@ Only add JSON examples when the example is accurate and useful. Do not add examp
 
 Common mappings:
 
-| Backend struct/file | Docs model |
-|---|---|
-| `ItemJson` in `entity_item.json.go` | `Item` |
-| `ItemI18NJson` | `ItemI18NJson` |
-| `RivenJson` or similar in `entity_riven.json.go` | `Riven Item` |
-| `RivenAttributeJson` | `Riven Attribute` |
-| `LichWeaponJson`, `LichEphemeraJson`, `LichQuirkJson` | `Lich Weapon`, `Lich Ephemera`, `Lich Quirk` |
-| `SisterWeaponJson`, `SisterEphemeraJson`, `SisterQuirkJson` | `Sister Weapon`, `Sister Ephemera`, `Sister Quirk` |
-| `NpcJson` | `Npc` |
-| `LocationJson` | `Location` |
-| `MissionJson` | `Mission` |
-| `OrderJson` | `Order` |
-| transaction/archive structs | `Transaction` or archive-specific model, only if public. |
-| `UserShortJson` | `UserShort` |
-| `UserJson` | `User` |
-| `MeJson` | `UserPrivate` |
-| `ActivityJson` | `Activity` |
-| `NameHistoryJson` | `NameHistory`, nested under `User` if documented. |
-| `ClientJson` | `Client` |
-| `GroupJson` | `Group` |
-| `DashboardShowcaseJson` | `DashboardShowcase` |
-| `VersionJson` | `Versions` |
+| Backend struct/file                                         | Docs model                                               |
+| ----------------------------------------------------------- | -------------------------------------------------------- |
+| `ItemJson` in `entity_item.json.go`                         | `Item`                                                   |
+| `ItemI18NJson`                                              | `ItemI18NJson`                                           |
+| `RivenJson` or similar in `entity_riven.json.go`            | `Riven Item`                                             |
+| `RivenAttributeJson`                                        | `Riven Attribute`                                        |
+| `LichWeaponJson`, `LichEphemeraJson`, `LichQuirkJson`       | `Lich Weapon`, `Lich Ephemera`, `Lich Quirk`             |
+| `SisterWeaponJson`, `SisterEphemeraJson`, `SisterQuirkJson` | `Sister Weapon`, `Sister Ephemera`, `Sister Quirk`       |
+| `NpcJson`                                                   | `Npc`                                                    |
+| `LocationJson`                                              | `Location`                                               |
+| `MissionJson`                                               | `Mission`                                                |
+| `OrderJson`                                                 | `Order`                                                  |
+| transaction/archive structs                                 | `Transaction` or archive-specific model, only if public. |
+| `UserShortJson`                                             | `UserShort`                                              |
+| `UserJson`                                                  | `User`                                                   |
+| `MeJson`                                                    | `UserPrivate`                                            |
+| `ActivityJson`                                              | `Activity`                                               |
+| `NameHistoryJson`                                           | `NameHistory`, nested under `User` if documented.        |
+| `ClientJson`                                                | `Client`                                                 |
+| `GroupJson`                                                 | `Group`                                                  |
+| `DashboardShowcaseJson`                                     | `DashboardShowcase`                                      |
+| `VersionJson`                                               | `Versions`                                               |
 
 If a backend struct has no docs section:
 

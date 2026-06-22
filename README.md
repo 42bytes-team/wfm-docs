@@ -8,17 +8,17 @@ Built with [Docusaurus](https://docusaurus.io/), React, TypeScript, and Yarn 4.
 
 ## Repository Overview
 
-| Path | Purpose |
-|---|---|
-| `docs/` | Documentation pages. Most content changes happen here. |
-| `docs/api/` | HTTP API documentation. |
-| `docs/websockets/` | WebSocket command, event, and payload documentation. |
-| `docs/oauth/` | OAuth 2.0 documentation. |
-| `docs/contributing/` | Contributor guides and documentation style rules. |
-| `src/` | Docusaurus pages, React components, and custom CSS. |
-| `static/` | Static assets copied into the final site. |
-| `sidebars.ts` | Sidebar navigation order. Update when adding docs pages. |
-| `docusaurus.config.ts` | Docusaurus site configuration. |
+| Path                   | Purpose                                                  |
+| ---------------------- | -------------------------------------------------------- |
+| `docs/`                | Documentation pages. Most content changes happen here.   |
+| `docs/api/`            | HTTP API documentation.                                  |
+| `docs/websockets/`     | WebSocket command, event, and payload documentation.     |
+| `docs/oauth/`          | OAuth 2.0 documentation.                                 |
+| `docs/contributing/`   | Contributor guides and documentation style rules.        |
+| `src/`                 | Docusaurus pages, React components, and custom CSS.      |
+| `static/`              | Static assets copied into the final site.                |
+| `sidebars.ts`          | Sidebar navigation order. Update when adding docs pages. |
+| `docusaurus.config.ts` | Docusaurus site configuration.                           |
 
 ## Requirements
 
@@ -44,15 +44,15 @@ Output is written to `build/`.
 
 ## Commands
 
-| Command | Description |
-|---|---|
-| `yarn start` | Start the dev server on `localhost:3000` and open browser. |
-| `yarn start:wfm` | Start on `0.0.0.0:3001` with health check and open `docs.warframe.test` (internal devs only). |
-| `yarn start:wfm:no-open` | Same as `start:wfm` without opening the browser. |
-| `yarn build` | Build the static production site. |
-| `yarn serve` | Serve the built `build/` output locally. |
-| `yarn typecheck` | Run TypeScript checks. |
-| `yarn clear` | Clear Docusaurus caches. |
+| Command                  | Description                                                                                   |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+| `yarn start`             | Start the dev server on `localhost:3000` and open browser.                                    |
+| `yarn start:wfm`         | Start on `0.0.0.0:3001` with health check and open `docs.warframe.test` (internal devs only). |
+| `yarn start:wfm:no-open` | Same as `start:wfm` without opening the browser.                                              |
+| `yarn build`             | Build the static production site.                                                             |
+| `yarn serve`             | Serve the built `build/` output locally.                                                      |
+| `yarn typecheck`         | Run TypeScript checks.                                                                        |
+| `yarn clear`             | Clear Docusaurus caches.                                                                      |
 
 ## Contributing
 

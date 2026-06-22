@@ -8,12 +8,12 @@ Binds to `0.0.0.0:3001` so that Nginx can proxy `docs.warframe.test` to the dev 
 
 ### Environment Variables
 
-| Variable | Default | Description |
-|---|---|---|
-| `DOCS_HOST` | `0.0.0.0` | Host the dev server binds to. |
-| `DOCS_PORT` | `3001` | Port the dev server listens on. |
-| `DOCS_OPEN` | `true` | Set to `false` to skip opening the browser automatically. |
-| `DOCS_OPEN_URL` | `http://docs.warframe.test/docs/intro` | URL to open after the server is ready. |
+| Variable        | Default                                | Description                                               |
+| --------------- | -------------------------------------- | --------------------------------------------------------- |
+| `DOCS_HOST`     | `0.0.0.0`                              | Host the dev server binds to.                             |
+| `DOCS_PORT`     | `3001`                                 | Port the dev server listens on.                           |
+| `DOCS_OPEN`     | `true`                                 | Set to `false` to skip opening the browser automatically. |
+| `DOCS_OPEN_URL` | `http://docs.warframe.test/docs/intro` | URL to open after the server is ready.                    |
 
 ### Usage
 

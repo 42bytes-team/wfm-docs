@@ -25,11 +25,11 @@ Small, focused pull requests are easier to review than very large rewrites. If y
 
 The exact layout may change, but the important areas are:
 
-| Area | Purpose |
-|---|---|
-| `locales/` | Main UI translation files. |
-| `misc/` | Additional translation files for labels, templates, and generated UI text. |
-| `en.json` | English source text and the best template for new languages. |
+| Area        | Purpose                                                                      |
+| ----------- | ---------------------------------------------------------------------------- |
+| `locales/`  | Main UI translation files.                                                   |
+| `misc/`     | Additional translation files for labels, templates, and generated UI text.   |
+| `en.json`   | English source text and the best template for new languages.                 |
 | `overwolf/` | Legacy/special integration files. Do not edit unless maintainers ask you to. |
 
 ## Translation Rules

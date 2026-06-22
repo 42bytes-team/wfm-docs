@@ -34,22 +34,26 @@
 
 .doc-callout--info {
   border-left-color: var(--color-callout-info);
-  background: linear-gradient(90deg, rgba(52, 171, 214, 0.12), transparent), var(--bg-surface-primary);
+  background:
+    linear-gradient(90deg, rgba(52, 171, 214, 0.12), transparent), var(--bg-surface-primary);
 }
 
 .doc-callout--warning {
   border-left-color: var(--color-callout-warning);
-  background: linear-gradient(90deg, rgba(240, 200, 112, 0.14), transparent), var(--bg-surface-primary);
+  background:
+    linear-gradient(90deg, rgba(240, 200, 112, 0.14), transparent), var(--bg-surface-primary);
 }
 
 .doc-callout--danger {
   border-left-color: var(--color-callout-danger);
-  background: linear-gradient(90deg, rgba(255, 107, 107, 0.14), transparent), var(--bg-surface-primary);
+  background:
+    linear-gradient(90deg, rgba(255, 107, 107, 0.14), transparent), var(--bg-surface-primary);
 }
 
 .doc-callout--success {
   border-left-color: var(--color-callout-success);
-  background: linear-gradient(90deg, rgba(19, 193, 144, 0.13), transparent), var(--bg-surface-primary);
+  background:
+    linear-gradient(90deg, rgba(19, 193, 144, 0.13), transparent), var(--bg-surface-primary);
 }
 
 .doc-callout--neutral {

@@ -4,7 +4,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-import ApiEndpoint, {ApiBadge, ApiCallout} from '@site/src/components/ApiEndpoint';
+import ApiEndpoint, { ApiBadge, ApiCallout } from '@site/src/components/ApiEndpoint';
 
 # Users
 
@@ -16,7 +16,7 @@ Endpoints for authenticated user data, public profiles, and profile media upload
   method="GET"
   path="/v2/me"
   summary="Get information about the authenticated user."
-  badges={[{kind: 'auth', icon: '🔒', label: 'Auth required'}]}
+  badges={[{ kind: 'auth', icon: '🔒', label: 'Auth required' }]}
 />
 
 <ApiCallout kind="warning" icon="🔒" title="Requires">
@@ -51,7 +51,7 @@ None.
   method="PATCH"
   path="/v2/me"
   summary="Update the authenticated user's profile preferences."
-  badges={[{kind: 'auth', icon: '🔒', label: 'Auth required'}]}
+  badges={[{ kind: 'auth', icon: '🔒', label: 'Auth required' }]}
 />
 
 <ApiCallout kind="warning" icon="🔒" title="Requires">
@@ -78,15 +78,15 @@ None.
 
 #### Body Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `about` | <ApiBadge kind="neutral" label="string" /> | Profile description in Markdown. Max: `300` characters. Returned as `about` HTML and `aboutRaw` Markdown. |
-| `platform` | <ApiBadge kind="neutral" label="Platform" /> | Main platform the user plays on. |
-| `crossplay` | <ApiBadge kind="neutral" label="bool" /> | Whether crossplay is enabled for the user's Warframe account. Cannot be `true` when the effective platform is `switch`. |
-| `locale` | <ApiBadge kind="neutral" label="Language" /> | UI locale and preferred communication language. |
-| `theme` | <ApiBadge kind="neutral" label="light, dark, or system" /> | UI theme preference. |
-| `syncLocale` | <ApiBadge kind="neutral" label="bool" /> | Whether locale should sync across devices. |
-| `syncTheme` | <ApiBadge kind="neutral" label="bool" /> | Whether theme should sync across devices. |
+| Field        | Type                                                       | Description                                                                                                             |
+| ------------ | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `about`      | <ApiBadge kind="neutral" label="string" />                 | Profile description in Markdown. Max: `300` characters. Returned as `about` HTML and `aboutRaw` Markdown.               |
+| `platform`   | <ApiBadge kind="neutral" label="Platform" />               | Main platform the user plays on.                                                                                        |
+| `crossplay`  | <ApiBadge kind="neutral" label="bool" />                   | Whether crossplay is enabled for the user's Warframe account. Cannot be `true` when the effective platform is `switch`. |
+| `locale`     | <ApiBadge kind="neutral" label="Language" />               | UI locale and preferred communication language.                                                                         |
+| `theme`      | <ApiBadge kind="neutral" label="light, dark, or system" /> | UI theme preference.                                                                                                    |
+| `syncLocale` | <ApiBadge kind="neutral" label="bool" />                   | Whether locale should sync across devices.                                                                              |
+| `syncTheme`  | <ApiBadge kind="neutral" label="bool" />                   | Whether theme should sync across devices.                                                                               |
 
 #### Constraints
 
@@ -113,8 +113,8 @@ None.
   path="/v2/me/avatar"
   summary="Update the authenticated user's avatar."
   badges={[
-    {kind: 'auth', icon: '🔒', label: 'Auth required'},
-    {kind: 'neutral', icon: '☁', label: 'File upload'},
+    { kind: 'auth', icon: '🔒', label: 'Auth required' },
+    { kind: 'neutral', icon: '☁', label: 'File upload' },
   ]}
 />
 
@@ -132,8 +132,8 @@ form-data; name="avatar"; filename="whatever.png"
 
 #### Body Fields
 
-| Field | Type | Description |
-|---|---|---|
+| Field    | Type                                     | Description                             |
+| -------- | ---------------------------------------- | --------------------------------------- |
 | `avatar` | <ApiBadge kind="neutral" label="file" /> | Image file to upload as the new avatar. |
 
 #### Constraints
@@ -160,9 +160,9 @@ form-data; name="avatar"; filename="whatever.png"
   path="/v2/me/background"
   summary="Update the authenticated user's profile background."
   badges={[
-    {kind: 'auth', icon: '🔒', label: 'Auth required'},
-    {kind: 'firstParty', icon: '◆', label: 'Silver tier+'},
-    {kind: 'neutral', icon: '☁', label: 'File upload'},
+    { kind: 'auth', icon: '🔒', label: 'Auth required' },
+    { kind: 'firstParty', icon: '◆', label: 'Silver tier+' },
+    { kind: 'neutral', icon: '☁', label: 'File upload' },
   ]}
 />
 
@@ -186,8 +186,8 @@ form-data; name="background"; filename="whatever.png"
 
 #### Body Fields
 
-| Field | Type | Description |
-|---|---|---|
+| Field        | Type                                     | Description                                 |
+| ------------ | ---------------------------------------- | ------------------------------------------- |
 | `background` | <ApiBadge kind="neutral" label="file" /> | Image file to upload as the new background. |
 
 #### Constraints
@@ -212,7 +212,7 @@ form-data; name="background"; filename="whatever.png"
 <ApiEndpoint
   method="GET"
   path="/v2/user/{slug}"
-  aliases={["/v2/userId/{userId}"]}
+  aliases={['/v2/userId/{userId}']}
   summary="Get public information about a user."
 />
 
@@ -222,10 +222,10 @@ Users with role `moderator` or higher may receive moderation fields described in
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
-| `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [User](../data-models.mdx#user) model. |
-| `userId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [User](../data-models.mdx#user) model. |
+| Name     | Type                                       | Description                                                  |
+| -------- | ------------------------------------------ | ------------------------------------------------------------ |
+| `slug`   | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [User](../data-models.mdx#user) model. |
+| `userId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [User](../data-models.mdx#user) model.   |
 
 ### Response
 

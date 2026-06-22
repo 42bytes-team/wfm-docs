@@ -8,15 +8,15 @@ This repository contains the public Warframe.market documentation site. It uses 
 
 Before specialized work, read the matching skill:
 
-| Task | Skill |
-|---|---|
-| Docusaurus config, package scripts, navigation, styling, build, or dependency changes | `.agents/skills/docusaurus-project/SKILL.md` |
-| HTTP endpoint documentation from `vex-web/routes.go` and `handlers/` | `.agents/skills/http-api-endpoint-documentation/SKILL.md` |
-| Data model documentation from backend `entity_*.json.go` files | `.agents/skills/data-model-documentation/SKILL.md` |
-| WebSocket documentation from `keyleth-ws` routes, modules, payloads, and events | `.agents/skills/websocket-documentation/SKILL.md` |
-| API, OAuth, WebSocket, rules, or public contract documentation | `.agents/skills/api-documentation/SKILL.md` |
-| Git status, staging, commits, branches, or repository hygiene | `.agents/skills/git-workflow/SKILL.md` |
-| Code review, docs review, diff review, or merge-readiness check | `.agents/skills/code-review/SKILL.md` |
+| Task                                                                                  | Skill                                                     |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| Docusaurus config, package scripts, navigation, styling, build, or dependency changes | `.agents/skills/docusaurus-project/SKILL.md`              |
+| HTTP endpoint documentation from `vex-web/routes.go` and `handlers/`                  | `.agents/skills/http-api-endpoint-documentation/SKILL.md` |
+| Data model documentation from backend `entity_*.json.go` files                        | `.agents/skills/data-model-documentation/SKILL.md`        |
+| WebSocket documentation from `keyleth-ws` routes, modules, payloads, and events       | `.agents/skills/websocket-documentation/SKILL.md`         |
+| API, OAuth, WebSocket, rules, or public contract documentation                        | `.agents/skills/api-documentation/SKILL.md`               |
+| Git status, staging, commits, branches, or repository hygiene                         | `.agents/skills/git-workflow/SKILL.md`                    |
+| Code review, docs review, diff review, or merge-readiness check                       | `.agents/skills/code-review/SKILL.md`                     |
 
 If more than one skill applies, read all relevant skills. More specific instructions override this file.
 

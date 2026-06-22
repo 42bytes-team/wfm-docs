@@ -7,7 +7,12 @@
   background:
     radial-gradient(circle at 28% 12%, var(--hero-glow-primary), transparent 24rem),
     radial-gradient(circle at 78% 22%, var(--hero-glow-secondary), transparent 28rem),
-    linear-gradient(135deg, var(--bg-bottom-menu) 0%, var(--bg-screen) 54%, var(--bg-surface-secondary) 100%);
+    linear-gradient(
+      135deg,
+      var(--bg-bottom-menu) 0%,
+      var(--bg-screen) 54%,
+      var(--bg-surface-secondary) 100%
+    );
   border-bottom: 1px solid var(--outline-divider);
   color: var(--text-primary);
   overflow: hidden;
@@ -39,7 +44,10 @@
   border-radius: 14px;
   color: var(--ifm-font-color-base);
   padding: 1.5rem;
-  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .card:hover {

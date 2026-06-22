@@ -99,9 +99,9 @@ Example:
 <ApiEndpoint
   method="GET"
   path="/orders/item/{slug}/top"
-  aliases={["/orders/itemId/{id}/top"]}
+  aliases={['/orders/itemId/{id}/top']}
   summary="Get the top buy and sell orders for an item."
-  badges={[{kind: 'crossplay', icon: '🌀', label: 'Crossplay aware'}]}
+  badges={[{ kind: 'crossplay', icon: '🌀', label: 'Crossplay aware' }]}
 />
 ```
 
@@ -147,11 +147,11 @@ Global header parsing is in `middlewares/headers.go`.
 
 Document these headers only when the endpoint actually uses their context or the response changes because of them.
 
-| Header | Default | Evidence |
-|---|---|---|
-| `Language` | `en` | Handler/service uses `LangFromContext(ctx)` or localized shape calls. |
-| `Platform` | `pc` | Handler/service uses `PlatformFromContext(ctx)`. |
-| `Crossplay` | `false` | Handler/service uses `CrossplayFromContext(ctx)`. |
+| Header      | Default | Evidence                                                              |
+| ----------- | ------- | --------------------------------------------------------------------- |
+| `Language`  | `en`    | Handler/service uses `LangFromContext(ctx)` or localized shape calls. |
+| `Platform`  | `pc`    | Handler/service uses `PlatformFromContext(ctx)`.                      |
+| `Crossplay` | `false` | Handler/service uses `CrossplayFromContext(ctx)`.                     |
 
 Do not add `Language`, `Platform`, or `Crossplay` tables to every endpoint automatically.
 
@@ -210,11 +210,11 @@ Example table:
 ```mdx
 #### Body Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `itemId` | <ApiBadge kind="neutral" label="string" /> | Required. Item identifier. |
-| `type` | <ApiBadge kind="neutral" label="string" /> | Required. Must be `sell` or `buy`. |
-| `rank` | <ApiBadge kind="neutral" label="int or null" /> | Optional. Required only for ranked items. Range: `0` to item max rank. |
+| Field    | Type                                            | Description                                                            |
+| -------- | ----------------------------------------------- | ---------------------------------------------------------------------- |
+| `itemId` | <ApiBadge kind="neutral" label="string" />      | Required. Item identifier.                                             |
+| `type`   | <ApiBadge kind="neutral" label="string" />      | Required. Must be `sell` or `buy`.                                     |
+| `rank`   | <ApiBadge kind="neutral" label="int or null" /> | Optional. Required only for ranked items. Range: `0` to item max rank. |
 ```
 
 For multipart endpoints:
@@ -230,8 +230,8 @@ form-data; name="avatar"; filename="avatar.png"
 
 #### Body Fields
 
-| Field | Type | Description |
-|---|---|---|
+| Field    | Type                                     | Description           |
+| -------- | ---------------------------------------- | --------------------- |
 | `avatar` | <ApiBadge kind="neutral" label="file" /> | Image file to upload. |
 ````
 
@@ -300,10 +300,10 @@ Response example:
 
 #### Data Fields
 
-| Field | Type | Description |
-|---|---|---|
+| Field  | Type                                        | Description  |
+| ------ | ------------------------------------------- | ------------ |
 | `sell` | <ApiBadge kind="neutral" label="[]Order" /> | Sell orders. |
-| `buy` | <ApiBadge kind="neutral" label="[]Order" /> | Buy orders. |
+| `buy`  | <ApiBadge kind="neutral" label="[]Order" /> | Buy orders.  |
 ````
 
 ## Error And Status Code Rules
@@ -327,11 +327,11 @@ Use a table if helpful:
 ```mdx
 #### Errors
 
-| Status | Condition |
-|---|---|
-| `400` | Request body failed validation. |
-| `401` | Authentication is missing or invalid. |
-| `403` | User is not verified. |
+| Status | Condition                             |
+| ------ | ------------------------------------- |
+| `400`  | Request body failed validation.       |
+| `401`  | Authentication is missing or invalid. |
+| `403`  | User is not verified.                 |
 ```
 
 ## Endpoint Page Format
@@ -341,7 +341,7 @@ Use the style from `docs/contributing/http-api-endpoint-format.mdx`.
 Endpoint docs that use components should be `.mdx` and import:
 
 ```mdx
-import ApiEndpoint, {ApiBadge, ApiCallout} from '@site/src/components/ApiEndpoint';
+import ApiEndpoint, { ApiBadge, ApiCallout } from '@site/src/components/ApiEndpoint';
 ```
 
 Use this skeleton:
@@ -352,25 +352,23 @@ Use this skeleton:
 <ApiEndpoint
   method="GET"
   path="/orders/item/{slug}/top"
-  aliases={["/orders/itemId/{id}/top"]}
+  aliases={['/orders/itemId/{id}/top']}
   summary="Get the top buy and sell orders for an item."
-  badges={[
-    {kind: 'crossplay', icon: '🌀', label: 'Crossplay aware'},
-  ]}
+  badges={[{ kind: 'crossplay', icon: '🌀', label: 'Crossplay aware' }]}
 />
 
 ### Request
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
-| `slug` | <ApiBadge kind="neutral" label="string" /> | Item slug. |
+| Name   | Type                                       | Description |
+| ------ | ------------------------------------------ | ----------- |
+| `slug` | <ApiBadge kind="neutral" label="string" /> | Item slug.  |
 
 #### Query Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name   | Type                                    | Description                |
+| ------ | --------------------------------------- | -------------------------- |
 | `rank` | <ApiBadge kind="neutral" label="int" /> | Optional. Exact item rank. |
 
 ### Response

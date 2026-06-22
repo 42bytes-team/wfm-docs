@@ -4,7 +4,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-import ApiEndpoint, {ApiBadge, ApiCallout} from '@site/src/components/ApiEndpoint';
+import ApiEndpoint, { ApiBadge, ApiCallout } from '@site/src/components/ApiEndpoint';
 
 # Orders
 
@@ -17,8 +17,8 @@ Endpoints for marketplace orders.
   path="/v2/orders/recent"
   summary="Get the most recent visible orders from non-banned users."
   badges={[
-    {kind: 'crossplay', icon: '🌀', label: 'Platform/crossplay aware'},
-    {kind: 'cache', icon: '⏱', label: '1m refresh'},
+    { kind: 'crossplay', icon: '🌀', label: 'Platform/crossplay aware' },
+    { kind: 'cache', icon: '⏱', label: '1m refresh' },
   ]}
 />
 
@@ -49,9 +49,9 @@ None.
 <ApiEndpoint
   method="GET"
   path="/v2/orders/item/{slug}"
-  aliases={["/v2/orders/itemId/{itemId}"]}
+  aliases={['/v2/orders/itemId/{itemId}']}
   summary="Get visible orders for an item."
-  badges={[{kind: 'crossplay', icon: '🌀', label: 'Platform/crossplay aware'}]}
+  badges={[{ kind: 'crossplay', icon: '🌀', label: 'Platform/crossplay aware' }]}
 />
 
 Returns visible orders from non-banned users whose `lastSeen` is within the last `48h`, or whose `lastSeen` is missing. Current user status is refreshed in the response, but offline users are not removed by this endpoint.
@@ -60,10 +60,10 @@ Returns visible orders from non-banned users whose `lastSeen` is within the last
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
-| `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [Item](../data-models.mdx#item) model. |
-| `itemId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Item](../data-models.mdx#item) model. |
+| Name     | Type                                       | Description                                                  |
+| -------- | ------------------------------------------ | ------------------------------------------------------------ |
+| `slug`   | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [Item](../data-models.mdx#item) model. |
+| `itemId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Item](../data-models.mdx#item) model.   |
 
 ### Response
 
@@ -84,11 +84,11 @@ Returns visible orders from non-banned users whose `lastSeen` is within the last
 <ApiEndpoint
   method="GET"
   path="/v2/orders/item/{slug}/top"
-  aliases={["/v2/orders/itemId/{itemId}/top"]}
+  aliases={['/v2/orders/itemId/{itemId}/top']}
   summary="Get the top buy and sell orders for an item from online users."
   badges={[
-    {kind: 'crossplay', icon: '🌀', label: 'Platform/crossplay aware'},
-    {kind: 'neutral', icon: '⇅', label: 'Custom ranking'},
+    { kind: 'crossplay', icon: '🌀', label: 'Platform/crossplay aware' },
+    { kind: 'neutral', icon: '⇅', label: 'Custom ranking' },
   ]}
 />
 
@@ -102,24 +102,24 @@ Buy orders are ranked from the seller's point of view: Endo listings first, then
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
-| `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [Item](../data-models.mdx#item) model. |
-| `itemId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Item](../data-models.mdx#item) model. |
+| Name     | Type                                       | Description                                                  |
+| -------- | ------------------------------------------ | ------------------------------------------------------------ |
+| `slug`   | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [Item](../data-models.mdx#item) model. |
+| `itemId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Item](../data-models.mdx#item) model.   |
 
 #### Query Parameters
 
-| Name | Type | Description |
-|---|---|---|
-| `rank` | <ApiBadge kind="neutral" label="int" /> | Exact item rank. Accepted range: `0` to item max rank. Ignored when the item has no ranks or when `rankLt` is provided. |
-| `rankLt` | <ApiBadge kind="neutral" label="int" /> | Match ranks lower than this value. Accepted range: `1` to item max rank. Takes precedence over `rank`. |
-| `charges` | <ApiBadge kind="neutral" label="int" /> | Exact remaining charges. Accepted range: `0` to item max charges. Ignored when the item has no charges or when `chargesLt` is provided. |
-| `chargesLt` | <ApiBadge kind="neutral" label="int" /> | Match remaining charges lower than this value. Accepted range: `1` to item max charges. Takes precedence over `charges`. |
-| `amberStars` | <ApiBadge kind="neutral" label="int" /> | Exact amber star count. Accepted range: `0` to item max amber stars. Ignored when the item has no amber stars or when `amberStarsLt` is provided. |
-| `amberStarsLt` | <ApiBadge kind="neutral" label="int" /> | Match amber star counts lower than this value. Accepted range: `1` to item max amber stars. Takes precedence over `amberStars`. |
-| `cyanStars` | <ApiBadge kind="neutral" label="int" /> | Exact cyan star count. Accepted range: `0` to item max cyan stars. Ignored when the item has no cyan stars or when `cyanStarsLt` is provided. |
-| `cyanStarsLt` | <ApiBadge kind="neutral" label="int" /> | Match cyan star counts lower than this value. Accepted range: `1` to item max cyan stars. Takes precedence over `cyanStars`. |
-| `subtype` | <ApiBadge kind="neutral" label="string" /> | Exact item subtype. Must be one of the subtypes supported by the item. Ignored when the item has no subtypes. |
+| Name           | Type                                       | Description                                                                                                                                       |
+| -------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `rank`         | <ApiBadge kind="neutral" label="int" />    | Exact item rank. Accepted range: `0` to item max rank. Ignored when the item has no ranks or when `rankLt` is provided.                           |
+| `rankLt`       | <ApiBadge kind="neutral" label="int" />    | Match ranks lower than this value. Accepted range: `1` to item max rank. Takes precedence over `rank`.                                            |
+| `charges`      | <ApiBadge kind="neutral" label="int" />    | Exact remaining charges. Accepted range: `0` to item max charges. Ignored when the item has no charges or when `chargesLt` is provided.           |
+| `chargesLt`    | <ApiBadge kind="neutral" label="int" />    | Match remaining charges lower than this value. Accepted range: `1` to item max charges. Takes precedence over `charges`.                          |
+| `amberStars`   | <ApiBadge kind="neutral" label="int" />    | Exact amber star count. Accepted range: `0` to item max amber stars. Ignored when the item has no amber stars or when `amberStarsLt` is provided. |
+| `amberStarsLt` | <ApiBadge kind="neutral" label="int" />    | Match amber star counts lower than this value. Accepted range: `1` to item max amber stars. Takes precedence over `amberStars`.                   |
+| `cyanStars`    | <ApiBadge kind="neutral" label="int" />    | Exact cyan star count. Accepted range: `0` to item max cyan stars. Ignored when the item has no cyan stars or when `cyanStarsLt` is provided.     |
+| `cyanStarsLt`  | <ApiBadge kind="neutral" label="int" />    | Match cyan star counts lower than this value. Accepted range: `1` to item max cyan stars. Takes precedence over `cyanStars`.                      |
+| `subtype`      | <ApiBadge kind="neutral" label="string" /> | Exact item subtype. Must be one of the subtypes supported by the item. Ignored when the item has no subtypes.                                     |
 
 ### Response
 
@@ -138,17 +138,17 @@ Buy orders are ranked from the seller's point of view: Endo listings first, then
 
 #### Data Fields
 
-| Field | Type | Description |
-|---|---|---|
+| Field  | Type                                        | Description                                                                     |
+| ------ | ------------------------------------------- | ------------------------------------------------------------------------------- |
 | `sell` | <ApiBadge kind="neutral" label="Order[]" /> | Up to `5` sell orders from online users, sorted from the buyer's point of view. |
-| `buy` | <ApiBadge kind="neutral" label="Order[]" /> | Up to `5` buy orders from online users, sorted from the seller's point of view. |
+| `buy`  | <ApiBadge kind="neutral" label="Order[]" /> | Up to `5` buy orders from online users, sorted from the seller's point of view. |
 
 ## Get Orders By User
 
 <ApiEndpoint
   method="GET"
   path="/v2/orders/user/{slug}"
-  aliases={["/v2/orders/userId/{userId}"]}
+  aliases={['/v2/orders/userId/{userId}']}
   summary="Get orders from a specific user."
 />
 
@@ -158,10 +158,10 @@ Anonymous users and unrelated users receive only visible orders. The requested u
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
-| `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [User](../data-models.mdx#user) model. |
-| `userId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [User](../data-models.mdx#user) model. |
+| Name     | Type                                       | Description                                                  |
+| -------- | ------------------------------------------ | ------------------------------------------------------------ |
+| `slug`   | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [User](../data-models.mdx#user) model. |
+| `userId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [User](../data-models.mdx#user) model.   |
 
 ### Response
 
@@ -183,7 +183,7 @@ Anonymous users and unrelated users receive only visible orders. The requested u
   method="GET"
   path="/v2/orders/my"
   summary="Get all orders associated with the authenticated user."
-  badges={[{kind: 'auth', icon: '🔒', label: 'Auth required'}]}
+  badges={[{ kind: 'auth', icon: '🔒', label: 'Auth required' }]}
 />
 
 Returns visible and hidden orders.
@@ -222,8 +222,8 @@ None.
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name | Type                                       | Description                                                  |
+| ---- | ------------------------------------------ | ------------------------------------------------------------ |
 | `id` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Order](../data-models.mdx#order) model. |
 
 ### Response
@@ -246,7 +246,7 @@ None.
   method="POST"
   path="/v2/order"
   summary="Create a new order."
-  badges={[{kind: 'auth', icon: '🔒', label: 'Auth required'}]}
+  badges={[{ kind: 'auth', icon: '🔒', label: 'Auth required' }]}
 />
 
 <ApiCallout kind="warning" icon="🔒" title="Requires">
@@ -279,19 +279,19 @@ None.
 
 #### Body Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `itemId` | <ApiBadge kind="neutral" label="string" /> | Required. Item ID. Item must exist and be tradable. |
-| `type` | <ApiBadge kind="neutral" label="sell or buy" /> | Required. Order type. |
-| `platinum` | <ApiBadge kind="neutral" label="int" /> | Required. Price in platinum. Min: `1`. Max: `900000`. |
-| `quantity` | <ApiBadge kind="neutral" label="int" /> | Required. Order quantity. Min: `1`. Max: `9999`. |
-| `visible` | <ApiBadge kind="neutral" label="bool" /> | Whether the order is visible. Defaults to `false` when omitted. |
-| `perTrade` | <ApiBadge kind="neutral" label="int" /> | Required for bulk-tradable items, forbidden otherwise. Min: `1`. Max: `6`. Must divide `quantity`. |
-| `rank` | <ApiBadge kind="neutral" label="int" /> | Required when the item supports ranks, forbidden otherwise. Min: `0`. Max: item max rank. |
-| `charges` | <ApiBadge kind="neutral" label="int" /> | Required when the item supports charges, forbidden otherwise. Min: `0`. Max: item max charges. |
-| `subtype` | <ApiBadge kind="neutral" label="string" /> | Required when the item has subtypes, forbidden otherwise. Must be one of the item's subtypes. |
-| `amberStars` | <ApiBadge kind="neutral" label="int" /> | Required when the item supports amber stars, forbidden otherwise. Min: `0`. Max: item max amber stars. |
-| `cyanStars` | <ApiBadge kind="neutral" label="int" /> | Required when the item supports cyan stars, forbidden otherwise. Min: `0`. Max: item max cyan stars. |
+| Field        | Type                                            | Description                                                                                            |
+| ------------ | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `itemId`     | <ApiBadge kind="neutral" label="string" />      | Required. Item ID. Item must exist and be tradable.                                                    |
+| `type`       | <ApiBadge kind="neutral" label="sell or buy" /> | Required. Order type.                                                                                  |
+| `platinum`   | <ApiBadge kind="neutral" label="int" />         | Required. Price in platinum. Min: `1`. Max: `900000`.                                                  |
+| `quantity`   | <ApiBadge kind="neutral" label="int" />         | Required. Order quantity. Min: `1`. Max: `9999`.                                                       |
+| `visible`    | <ApiBadge kind="neutral" label="bool" />        | Whether the order is visible. Defaults to `false` when omitted.                                        |
+| `perTrade`   | <ApiBadge kind="neutral" label="int" />         | Required for bulk-tradable items, forbidden otherwise. Min: `1`. Max: `6`. Must divide `quantity`.     |
+| `rank`       | <ApiBadge kind="neutral" label="int" />         | Required when the item supports ranks, forbidden otherwise. Min: `0`. Max: item max rank.              |
+| `charges`    | <ApiBadge kind="neutral" label="int" />         | Required when the item supports charges, forbidden otherwise. Min: `0`. Max: item max charges.         |
+| `subtype`    | <ApiBadge kind="neutral" label="string" />      | Required when the item has subtypes, forbidden otherwise. Must be one of the item's subtypes.          |
+| `amberStars` | <ApiBadge kind="neutral" label="int" />         | Required when the item supports amber stars, forbidden otherwise. Min: `0`. Max: item max amber stars. |
+| `cyanStars`  | <ApiBadge kind="neutral" label="int" />         | Required when the item supports cyan stars, forbidden otherwise. Min: `0`. Max: item max cyan stars.   |
 
 ### Response
 
@@ -313,7 +313,7 @@ None.
   method="PATCH"
   path="/v2/order/{id}"
   summary="Patch an existing order."
-  badges={[{kind: 'auth', icon: '🔒', label: 'Auth required'}]}
+  badges={[{ kind: 'auth', icon: '🔒', label: 'Auth required' }]}
 />
 
 <ApiCallout kind="warning" icon="🔒" title="Requires">
@@ -328,8 +328,8 @@ None.
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name | Type                                       | Description                                                  |
+| ---- | ------------------------------------------ | ------------------------------------------------------------ |
 | `id` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Order](../data-models.mdx#order) model. |
 
 #### Body
@@ -350,17 +350,17 @@ None.
 
 #### Body Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `platinum` | <ApiBadge kind="neutral" label="int" /> | Price in platinum. Min: `1`. Max: `900000`. |
-| `quantity` | <ApiBadge kind="neutral" label="int" /> | Order quantity. Min: `1`. Max: `9999`. |
-| `visible` | <ApiBadge kind="neutral" label="bool" /> | Whether the order is visible. |
-| `perTrade` | <ApiBadge kind="neutral" label="int" /> | Allowed only for bulk-tradable items. Min: `1`. Max: `6`. Must divide the final quantity. |
-| `rank` | <ApiBadge kind="neutral" label="int" /> | Allowed only when the item supports ranks. Min: `0`. Max: item max rank. |
-| `charges` | <ApiBadge kind="neutral" label="int" /> | Allowed only when the item supports charges. Min: `0`. Max: item max charges. |
-| `subtype` | <ApiBadge kind="neutral" label="string" /> | Allowed only when the item has subtypes. Must be one of the item's subtypes. |
-| `amberStars` | <ApiBadge kind="neutral" label="int" /> | Allowed only when the item supports amber stars. Min: `0`. Max: item max amber stars. |
-| `cyanStars` | <ApiBadge kind="neutral" label="int" /> | Allowed only when the item supports cyan stars. Min: `0`. Max: item max cyan stars. |
+| Field        | Type                                       | Description                                                                               |
+| ------------ | ------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| `platinum`   | <ApiBadge kind="neutral" label="int" />    | Price in platinum. Min: `1`. Max: `900000`.                                               |
+| `quantity`   | <ApiBadge kind="neutral" label="int" />    | Order quantity. Min: `1`. Max: `9999`.                                                    |
+| `visible`    | <ApiBadge kind="neutral" label="bool" />   | Whether the order is visible.                                                             |
+| `perTrade`   | <ApiBadge kind="neutral" label="int" />    | Allowed only for bulk-tradable items. Min: `1`. Max: `6`. Must divide the final quantity. |
+| `rank`       | <ApiBadge kind="neutral" label="int" />    | Allowed only when the item supports ranks. Min: `0`. Max: item max rank.                  |
+| `charges`    | <ApiBadge kind="neutral" label="int" />    | Allowed only when the item supports charges. Min: `0`. Max: item max charges.             |
+| `subtype`    | <ApiBadge kind="neutral" label="string" /> | Allowed only when the item has subtypes. Must be one of the item's subtypes.              |
+| `amberStars` | <ApiBadge kind="neutral" label="int" />    | Allowed only when the item supports amber stars. Min: `0`. Max: item max amber stars.     |
+| `cyanStars`  | <ApiBadge kind="neutral" label="int" />    | Allowed only when the item supports cyan stars. Min: `0`. Max: item max cyan stars.       |
 
 ### Response
 
@@ -381,8 +381,8 @@ None.
   path="/v2/order/{id}"
   summary="Delete an order."
   badges={[
-    {kind: 'auth', icon: '🔒', label: 'Auth required'},
-    {kind: 'danger', icon: '✕', label: 'Deletes data'},
+    { kind: 'auth', icon: '🔒', label: 'Auth required' },
+    { kind: 'danger', icon: '✕', label: 'Deletes data' },
   ]}
 />
 
@@ -398,8 +398,8 @@ None.
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name | Type                                       | Description                                                  |
+| ---- | ------------------------------------------ | ------------------------------------------------------------ |
 | `id` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Order](../data-models.mdx#order) model. |
 
 ### Response
@@ -420,7 +420,7 @@ None.
   method="POST"
   path="/v2/order/{id}/close"
   summary="Close a portion or all of an existing order."
-  badges={[{kind: 'auth', icon: '🔒', label: 'Auth required'}]}
+  badges={[{ kind: 'auth', icon: '🔒', label: 'Auth required' }]}
 />
 
 If `quantity` is greater than the remaining order quantity, the service closes the remaining quantity. A full close deletes the order; a partial close updates the remaining quantity.
@@ -438,8 +438,8 @@ If `quantity` is greater than the remaining order quantity, the service closes t
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name | Type                                       | Description                                                  |
+| ---- | ------------------------------------------ | ------------------------------------------------------------ |
 | `id` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Order](../data-models.mdx#order) model. |
 
 #### Body
@@ -452,8 +452,8 @@ If `quantity` is greater than the remaining order quantity, the service closes t
 
 #### Body Fields
 
-| Field | Type | Description |
-|---|---|---|
+| Field      | Type                                    | Description                                                                         |
+| ---------- | --------------------------------------- | ----------------------------------------------------------------------------------- |
 | `quantity` | <ApiBadge kind="neutral" label="int" /> | Units to close. Min: `1`. Max: `9999`. Must be divisible by the order's `perTrade`. |
 
 ### Response
@@ -476,7 +476,7 @@ If `quantity` is greater than the remaining order quantity, the service closes t
   method="PATCH"
   path="/v2/orders/group/{id}"
   summary="Update visibility for a virtual order group."
-  badges={[{kind: 'auth', icon: '🔒', label: 'Auth required'}]}
+  badges={[{ kind: 'auth', icon: '🔒', label: 'Auth required' }]}
 />
 
 <ApiCallout kind="warning" icon="🔒" title="Requires">
@@ -490,8 +490,8 @@ If `quantity` is greater than the remaining order quantity, the service closes t
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name | Type                                       | Description                                               |
+| ---- | ------------------------------------------ | --------------------------------------------------------- |
 | `id` | <ApiBadge kind="neutral" label="string" /> | Group ID. Currently supported values: `all`, `ungrouped`. |
 
 #### Body
@@ -505,10 +505,10 @@ If `quantity` is greater than the remaining order quantity, the service closes t
 
 #### Body Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `visible` | <ApiBadge kind="neutral" label="bool" /> | Visibility state to apply. Defaults to `false` when omitted. |
-| `type` | <ApiBadge kind="neutral" label="sell or buy" /> | Restrict the update to one order type. Omit to update both types. |
+| Field     | Type                                            | Description                                                       |
+| --------- | ----------------------------------------------- | ----------------------------------------------------------------- |
+| `visible` | <ApiBadge kind="neutral" label="bool" />        | Visibility state to apply. Defaults to `false` when omitted.      |
+| `type`    | <ApiBadge kind="neutral" label="sell or buy" /> | Restrict the update to one order type. Omit to update both types. |
 
 ### Response
 
@@ -526,6 +526,6 @@ If `quantity` is greater than the remaining order quantity, the service closes t
 
 #### Data Fields
 
-| Field | Type | Description |
-|---|---|---|
+| Field     | Type                                    | Description               |
+| --------- | --------------------------------------- | ------------------------- |
 | `updated` | <ApiBadge kind="neutral" label="int" /> | Number of orders updated. |

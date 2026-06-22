@@ -76,17 +76,17 @@ yarn build
 
 ## Repository Layout
 
-| Area | Purpose |
-|---|---|
-| `docs/` | Main documentation pages. Most content changes happen here. |
-| `docs/api/` | HTTP API documentation. |
-| `docs/websockets/` | WebSocket command, event, and payload documentation. |
-| `docs/oauth/` | OAuth 2.0 documentation. |
-| `docs/contributing/` | Contributor guides and documentation style rules. |
-| `src/` | Docusaurus pages, React components, and custom CSS. |
-| `static/` | Static assets copied into the final site. |
-| `sidebars.ts` | Sidebar navigation order. Update this when adding docs pages. |
-| `docusaurus.config.ts` | Docusaurus site configuration. |
+| Area                   | Purpose                                                       |
+| ---------------------- | ------------------------------------------------------------- |
+| `docs/`                | Main documentation pages. Most content changes happen here.   |
+| `docs/api/`            | HTTP API documentation.                                       |
+| `docs/websockets/`     | WebSocket command, event, and payload documentation.          |
+| `docs/oauth/`          | OAuth 2.0 documentation.                                      |
+| `docs/contributing/`   | Contributor guides and documentation style rules.             |
+| `src/`                 | Docusaurus pages, React components, and custom CSS.           |
+| `static/`              | Static assets copied into the final site.                     |
+| `sidebars.ts`          | Sidebar navigation order. Update this when adding docs pages. |
+| `docusaurus.config.ts` | Docusaurus site configuration.                                |
 
 ## How To Contribute With Git
 

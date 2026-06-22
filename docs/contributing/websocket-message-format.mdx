@@ -4,7 +4,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-import {ApiBadge, ApiCallout, BadgeGrid, WsMessage} from '@site/src/components/ApiEndpoint';
+import { ApiBadge, ApiCallout, BadgeGrid, WsMessage } from '@site/src/components/ApiEndpoint';
 
 # WebSocket Message Format
 
@@ -16,11 +16,11 @@ WebSocket pages should stay mostly Markdown, with `WsMessage` cards for message 
 
 <BadgeGrid
   badges={[
-    {kind: 'neutral', icon: '💬', label: 'Command'},
-    {kind: 'neutral', icon: '🔔', label: 'Event'},
-    {kind: 'neutral', icon: '🔁', label: 'Stream'},
-    {kind: 'auth', icon: '🔒', label: 'Auth required'},
-    {kind: 'danger', icon: '🚧', label: 'Not implemented'},
+    { kind: 'neutral', icon: '💬', label: 'Command' },
+    { kind: 'neutral', icon: '🔔', label: 'Event' },
+    { kind: 'neutral', icon: '🔁', label: 'Stream' },
+    { kind: 'auth', icon: '🔒', label: 'Auth required' },
+    { kind: 'danger', icon: '🚧', label: 'Not implemented' },
   ]}
 />
 
@@ -40,13 +40,13 @@ WebSocket pages should stay mostly Markdown, with `WsMessage` cards for message 
 
 Render message markers directly in tables when explaining message types.
 
-| Marker | Meaning |
-|---|---|
-| <ApiBadge kind="neutral" icon="💬" label="Command" /> | Client request that expects `:ok`, `:error`, or protection error response. |
-| <ApiBadge kind="neutral" icon="🔔" label="Event" /> | One-way server message that does not expect a response. |
-| <ApiBadge kind="neutral" icon="🔁" label="Stream" /> | Event sequence with `meta.stream` and `meta.revision` for ordering. |
-| <ApiBadge kind="auth" icon="🔒" label="Auth required" /> | Message requires an authenticated and authorized client. |
-| <ApiBadge kind="danger" icon="🚧" label="Not implemented" /> | Route or behavior exists only as a planned/stubbed feature. |
+| Marker                                                       | Meaning                                                                    |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| <ApiBadge kind="neutral" icon="💬" label="Command" />        | Client request that expects `:ok`, `:error`, or protection error response. |
+| <ApiBadge kind="neutral" icon="🔔" label="Event" />          | One-way server message that does not expect a response.                    |
+| <ApiBadge kind="neutral" icon="🔁" label="Stream" />         | Event sequence with `meta.stream` and `meta.revision` for ordering.        |
+| <ApiBadge kind="auth" icon="🔒" label="Auth required" />     | Message requires an authenticated and authorized client.                   |
+| <ApiBadge kind="danger" icon="🚧" label="Not implemented" /> | Route or behavior exists only as a planned/stubbed feature.                |
 
 ## Command Example
 
@@ -55,8 +55,8 @@ Render message markers directly in tables when explaining message types.
   route="@wfm|cmd/example/doThing"
   summary="Perform an example action and return a command response."
   badges={[
-    {kind: 'neutral', icon: '💬', label: 'Command'},
-    {kind: 'auth', icon: '🔒', label: 'Auth required'},
+    { kind: 'neutral', icon: '💬', label: 'Command' },
+    { kind: 'auth', icon: '🔒', label: 'Auth required' },
   ]}
 />
 
@@ -83,10 +83,10 @@ Render message markers directly in tables when explaining message types.
 
 ### Payload Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `name` | <ApiBadge kind="neutral" label="string" /> | Required. Display name. Max: `32` characters. |
-| `enabled` | <ApiBadge kind="neutral" label="bool" /> | Optional. Whether the example is enabled. Default: `false`. |
+| Field     | Type                                       | Description                                                 |
+| --------- | ------------------------------------------ | ----------------------------------------------------------- |
+| `name`    | <ApiBadge kind="neutral" label="string" /> | Required. Display name. Max: `32` characters.               |
+| `enabled` | <ApiBadge kind="neutral" label="bool" />   | Optional. Whether the example is enabled. Default: `false`. |
 
 ### Success Message
 
@@ -118,7 +118,7 @@ Render message markers directly in tables when explaining message types.
   type="Event"
   route="@wfm|event/example/changed"
   summary="Notify clients that an example resource changed."
-  badges={[{kind: 'neutral', icon: '🔔', label: 'Event'}]}
+  badges={[{ kind: 'neutral', icon: '🔔', label: 'Event' }]}
 />
 
 ```json
@@ -133,10 +133,10 @@ Render message markers directly in tables when explaining message types.
 
 ### Payload Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `id` | <ApiBadge kind="neutral" label="string" /> | Changed resource identifier. |
-| `changedAt` | <ApiBadge kind="neutral" label="string" /> | Change timestamp. |
+| Field       | Type                                       | Description                  |
+| ----------- | ------------------------------------------ | ---------------------------- |
+| `id`        | <ApiBadge kind="neutral" label="string" /> | Changed resource identifier. |
+| `changedAt` | <ApiBadge kind="neutral" label="string" /> | Change timestamp.            |
 
 ## Stream Example
 
@@ -145,8 +145,8 @@ Render message markers directly in tables when explaining message types.
   route="@wfm|event/example/state"
   summary="Broadcast an ordered state update for one stream."
   badges={[
-    {kind: 'neutral', icon: '🔔', label: 'Event'},
-    {kind: 'neutral', icon: '🔁', label: 'Stream'},
+    { kind: 'neutral', icon: '🔔', label: 'Event' },
+    { kind: 'neutral', icon: '🔁', label: 'Stream' },
   ]}
 />
 
@@ -167,10 +167,10 @@ Use stream metadata only when the backend sends `meta.stream` and `meta.revision
 
 ### Meta Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `stream` | <ApiBadge kind="neutral" label="string" /> | Stream name used for ordering or deduplication. |
-| `revision` | <ApiBadge kind="neutral" label="number" /> | Monotonic revision within the stream. |
+| Field      | Type                                       | Description                                     |
+| ---------- | ------------------------------------------ | ----------------------------------------------- |
+| `stream`   | <ApiBadge kind="neutral" label="string" /> | Stream name used for ordering or deduplication. |
+| `revision` | <ApiBadge kind="neutral" label="number" /> | Monotonic revision within the stream.           |
 
 ## Model Payload Example
 
@@ -180,7 +180,7 @@ Use `ts` when the message body is schematic and refers to a reusable model.
   type="Event"
   route="@wfm|event/subscriptions/newOrder"
   summary="Send a matching newly created visible order to subscribers."
-  badges={[{kind: 'neutral', icon: '🔔', label: 'Event'}]}
+  badges={[{ kind: 'neutral', icon: '🔔', label: 'Event' }]}
 />
 
 ```ts
@@ -198,7 +198,7 @@ Payload is an [Order](../data-models.mdx#order) shape.
   type="Command"
   route="@wfm|cmd/example/future"
   summary="Reserved example command that is not implemented yet."
-  badges={[{kind: 'danger', icon: '🚧', label: 'Not implemented'}]}
+  badges={[{ kind: 'danger', icon: '🚧', label: 'Not implemented' }]}
 />
 
 Use this pattern only when a planned or stubbed backend route needs to be mentioned. Do not document stubbed routes as active behavior.
@@ -214,9 +214,7 @@ Use this skeleton for a new command route.
   type="Command"
   route="@wfm|cmd/domain/action"
   summary="Short behavior description."
-  badges={[
-    {kind: 'neutral', icon: '💬', label: 'Command'},
-  ]}
+  badges={[{ kind: 'neutral', icon: '💬', label: 'Command' }]}
 />
 
 ### Client Message
@@ -231,8 +229,8 @@ Use this skeleton for a new command route.
 
 ### Payload Fields
 
-| Field | Type | Description |
-|---|---|---|
+| Field   | Type                                       | Description        |
+| ------- | ------------------------------------------ | ------------------ |
 | `field` | <ApiBadge kind="neutral" label="string" /> | Field description. |
 
 ### Success Message

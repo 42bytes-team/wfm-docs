@@ -102,7 +102,7 @@ Use `.mdx` for endpoint pages that use `ApiEndpoint`, `ApiBadge`, `ApiCallout`, 
 At the top of an MDX endpoint page, import only the components you use:
 
 ```mdx
-import ApiEndpoint, {ApiBadge, ApiCallout, BadgeGrid} from '@site/src/components/ApiEndpoint';
+import ApiEndpoint, { ApiBadge, ApiCallout, BadgeGrid } from '@site/src/components/ApiEndpoint';
 ```
 
 If the right-side table of contents becomes noisy, keep it endpoint-only with front matter:
@@ -124,11 +124,11 @@ Each endpoint should follow this order exactly:
 <ApiEndpoint
   method="GET"
   path="/v2/items/{slug}"
-  aliases={["/v2/items/id/{itemId}"]}
+  aliases={['/v2/items/id/{itemId}']}
   summary="Get one item by slug or ID."
   badges={[
-    {kind: 'i18n', icon: '🇬🇧', label: 'Language aware'},
-    {kind: 'cache', icon: '⏱', label: '60s cache'},
+    { kind: 'i18n', icon: '🇬🇧', label: 'Language aware' },
+    { kind: 'cache', icon: '⏱', label: '60s cache' },
   ]}
 />
 
@@ -143,20 +143,20 @@ Each endpoint should follow this order exactly:
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name   | Type                                       | Description                         |
+| ------ | ------------------------------------------ | ----------------------------------- |
 | `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the `Item` model. |
 
 #### Query Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name      | Type                                       | Description                        |
+| --------- | ------------------------------------------ | ---------------------------------- |
 | `include` | <ApiBadge kind="neutral" label="string" /> | Optional comma-separated includes. |
 
 #### Headers
 
-| Name | Type | Description |
-|---|---|---|
+| Name       | Type                                      | Description                          |
+| ---------- | ----------------------------------------- | ------------------------------------ |
 | `Language` | <ApiBadge kind="i18n" label="Language" /> | Translation language. Default: `en`. |
 
 #### Body
@@ -169,8 +169,8 @@ Each endpoint should follow this order exactly:
 
 #### Body Fields
 
-| Field | Type | Description |
-|---|---|---|
+| Field     | Type                                     | Description           |
+| --------- | ---------------------------------------- | --------------------- |
 | `example` | <ApiBadge kind="neutral" label="bool" /> | Example request flag. |
 
 #### Constraints
@@ -191,9 +191,9 @@ Each endpoint should follow this order exactly:
 
 #### Data Fields
 
-| Field | Access | Type | Description |
-|---|---|---|---|
-| `id` |  | <ApiBadge kind="neutral" label="string" /> | Unique identifier. |
+| Field | Access | Type                                       | Description        |
+| ----- | ------ | ------------------------------------------ | ------------------ |
+| `id`  |        | <ApiBadge kind="neutral" label="string" /> | Unique identifier. |
 ````
 
 Omit sections that do not apply. For example, a `GET` endpoint with no request body should not include `#### Body` or `#### Body Fields`.

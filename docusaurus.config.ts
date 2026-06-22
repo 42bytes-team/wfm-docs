@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -133,33 +133,33 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
-        title: 'WFM Dev Portal',
-        logo: {
-          alt: 'Warframe.market logo',
-          src: 'img/logo-icon.png',
+      title: 'WFM Dev Portal',
+      logo: {
+        alt: 'Warframe.market logo',
+        src: 'img/logo-icon.png',
+      },
+      items: [
+        {
+          type: 'docSidebar',
+          sidebarId: 'docsSidebar',
+          position: 'left',
+          label: 'Docs',
         },
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'docsSidebar',
-            position: 'left',
-            label: 'Docs',
-          },
-          {
-            href: 'https://warframe.market',
-            label: 'Warframe.market',
-            position: 'right',
-          },
-          {
-            href: 'https://github.com/42bytes-team',
-            label: 'GitHub',
-            position: 'right',
-            className: 'header-github-link',
-          },
-          {
-            type: 'localeDropdown',
-            position: 'right',
-          },
+        {
+          href: 'https://warframe.market',
+          label: 'Warframe.market',
+          position: 'right',
+        },
+        {
+          href: 'https://github.com/42bytes-team',
+          label: 'GitHub',
+          position: 'right',
+          className: 'header-github-link',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
       ],
     },
     footer: {

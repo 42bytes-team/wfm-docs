@@ -13,6 +13,7 @@ Public documentation for Warframe.market APIs, OAuth, WebSockets, data models, a
 Most contributors do not have access to the private API backend. That is fine for wording-only improvements.
 
 These include:
+
 - Grammar, spelling, and punctuation fixes.
 - Clearer prose that does not change documented behavior.
 - Formatting and table readability improvements.
@@ -22,6 +23,7 @@ These include:
 ### Contract Changes
 
 These change documented public behavior and require backend source evidence from maintainers:
+
 - HTTP methods, paths, query parameters, headers, request/response fields, status codes, errors, caching, or rate limits.
 - Data model fields, types, optionality, enum values, or examples.
 - WebSocket routes, payload fields, command responses, event timing, or scopes.

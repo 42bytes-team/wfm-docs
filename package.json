@@ -5,8 +5,12 @@
   "packageManager": "yarn@4.14.1",
   "scripts": {
     "start": "docusaurus start --port 3000",
-    "start:wfm": "node scripts/start-wfm.js",
-    "start:wfm:no-open": "DOCS_OPEN=false node scripts/start-wfm.js",
+    "start:wfm": "tsx scripts/start-wfm.ts",
+    "start:wfm:no-open": "DOCS_OPEN=false tsx scripts/start-wfm.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,css,json,md,mdx}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,css,json,md,mdx}\"",
     "build": "docusaurus build",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve --host 0.0.0.0 --port 3001",
@@ -28,8 +32,17 @@
     "@docusaurus/module-type-aliases": "3.10.1",
     "@docusaurus/tsconfig": "3.10.1",
     "@docusaurus/types": "3.10.1",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.0.0",
     "@types/react": "^19.0.0",
-    "typescript": "~6.0.2"
+    "eslint": "^10.5.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.7.0",
+    "prettier": "^3.8.4",
+    "tsx": "^4.22.4",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.62.0"
   },
   "browserslist": {
     "production": [

@@ -4,7 +4,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-import ApiEndpoint, {ApiBadge} from '@site/src/components/ApiEndpoint';
+import ApiEndpoint, { ApiBadge } from '@site/src/components/ApiEndpoint';
 
 # Manifests And Collections
 
@@ -57,11 +57,11 @@ None.
 
 #### Data Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `apps` | <ApiBadge kind="neutral" label="VersionApps" /> | Current and minimum supported mobile app versions. |
-| `collections` | <ApiBadge kind="neutral" label="VersionCollections" /> | Collection version hashes. |
-| `updatedAt` | <ApiBadge kind="neutral" label="string" /> | Last version update timestamp. |
+| Field         | Type                                                   | Description                                        |
+| ------------- | ------------------------------------------------------ | -------------------------------------------------- |
+| `apps`        | <ApiBadge kind="neutral" label="VersionApps" />        | Current and minimum supported mobile app versions. |
+| `collections` | <ApiBadge kind="neutral" label="VersionCollections" /> | Collection version hashes.                         |
+| `updatedAt`   | <ApiBadge kind="neutral" label="string" />             | Last version update timestamp.                     |
 
 See [Versions](../data-models.mdx#versions).
 
@@ -71,7 +71,7 @@ See [Versions](../data-models.mdx#versions).
   method="GET"
   path="/v2/items"
   summary="Get all tradable items."
-  badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]}
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
 />
 
 ### Request
@@ -99,19 +99,19 @@ None.
 <ApiEndpoint
   method="GET"
   path="/v2/item/{slug}"
-  aliases={["/v2/itemId/{itemId}"]}
+  aliases={['/v2/itemId/{itemId}']}
   summary="Get full information about one item."
-  badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]}
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
 />
 
 ### Request
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
-| `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [Item](../data-models.mdx#item) model. |
-| `itemId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Item](../data-models.mdx#item) model. |
+| Name     | Type                                       | Description                                                  |
+| -------- | ------------------------------------------ | ------------------------------------------------------------ |
+| `slug`   | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [Item](../data-models.mdx#item) model. |
+| `itemId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Item](../data-models.mdx#item) model.   |
 
 ### Response
 
@@ -132,9 +132,9 @@ None.
 <ApiEndpoint
   method="GET"
   path="/v2/item/{slug}/set"
-  aliases={["/v2/itemId/{itemId}/set"]}
+  aliases={['/v2/itemId/{itemId}/set']}
   summary="Get the requested item and related set items."
-  badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]}
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
 />
 
 If the requested item is not part of a set, the response contains only that item. If the item is part of a set or is the set root, the response contains all items in that set.
@@ -143,10 +143,10 @@ If the requested item is not part of a set, the response contains only that item
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
-| `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [Item](../data-models.mdx#item) model. |
-| `itemId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Item](../data-models.mdx#item) model. |
+| Name     | Type                                       | Description                                                  |
+| -------- | ------------------------------------------ | ------------------------------------------------------------ |
+| `slug`   | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [Item](../data-models.mdx#item) model. |
+| `itemId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [Item](../data-models.mdx#item) model.   |
 
 ### Response
 
@@ -165,14 +165,19 @@ If the requested item is not part of a set, the response contains only that item
 
 #### Data Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `id` | <ApiBadge kind="neutral" label="string" /> | ID of the requested item. |
+| Field   | Type                                       | Description                                                                |
+| ------- | ------------------------------------------ | -------------------------------------------------------------------------- |
+| `id`    | <ApiBadge kind="neutral" label="string" /> | ID of the requested item.                                                  |
 | `items` | <ApiBadge kind="neutral" label="Item[]" /> | Items in the set, or only the requested item when it is not part of a set. |
 
 ## List Riven Weapons
 
-<ApiEndpoint method="GET" path="/v2/riven/weapons" summary="Get all tradable riven weapons." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/riven/weapons"
+  summary="Get all tradable riven weapons."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Request
 
@@ -196,14 +201,19 @@ None.
 
 ## Get Riven Weapon
 
-<ApiEndpoint method="GET" path="/v2/riven/weapon/{slug}" summary="Get full information about one riven weapon." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/riven/weapon/{slug}"
+  summary="Get full information about one riven weapon."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Request
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name   | Type                                       | Description                                                              |
+| ------ | ------------------------------------------ | ------------------------------------------------------------------------ |
 | `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [Riven Item](../data-models.mdx#riven-item) model. |
 
 ### Response
@@ -222,7 +232,12 @@ None.
 
 ## List Riven Attributes
 
-<ApiEndpoint method="GET" path="/v2/riven/attributes" summary="Get all riven weapon attributes." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/riven/attributes"
+  summary="Get all riven weapon attributes."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Request
 
@@ -246,7 +261,12 @@ None.
 
 ## List Lich Weapons
 
-<ApiEndpoint method="GET" path="/v2/lich/weapons" summary="Get all tradable lich weapons." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/lich/weapons"
+  summary="Get all tradable lich weapons."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Request
 
@@ -270,14 +290,19 @@ None.
 
 ## Get Lich Weapon
 
-<ApiEndpoint method="GET" path="/v2/lich/weapon/{slug}" summary="Get full information about one lich weapon." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/lich/weapon/{slug}"
+  summary="Get full information about one lich weapon."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Request
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name   | Type                                       | Description                                                                |
+| ------ | ------------------------------------------ | -------------------------------------------------------------------------- |
 | `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [Lich Weapon](../data-models.mdx#lich-weapon) model. |
 
 ### Response
@@ -296,7 +321,12 @@ None.
 
 ## List Lich Ephemeras
 
-<ApiEndpoint method="GET" path="/v2/lich/ephemeras" summary="Get all tradable lich ephemeras." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/lich/ephemeras"
+  summary="Get all tradable lich ephemeras."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Response
 
@@ -314,7 +344,12 @@ None.
 
 ## List Lich Quirks
 
-<ApiEndpoint method="GET" path="/v2/lich/quirks" summary="Get all tradable lich quirks." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/lich/quirks"
+  summary="Get all tradable lich quirks."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Response
 
@@ -332,7 +367,12 @@ None.
 
 ## List Sister Weapons
 
-<ApiEndpoint method="GET" path="/v2/sister/weapons" summary="Get all tradable sister weapons." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/sister/weapons"
+  summary="Get all tradable sister weapons."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Response
 
@@ -350,14 +390,19 @@ None.
 
 ## Get Sister Weapon
 
-<ApiEndpoint method="GET" path="/v2/sister/weapon/{slug}" summary="Get full information about one sister weapon." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/sister/weapon/{slug}"
+  summary="Get full information about one sister weapon."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Request
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name   | Type                                       | Description                                                                    |
+| ------ | ------------------------------------------ | ------------------------------------------------------------------------------ |
 | `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [Sister Weapon](../data-models.mdx#sister-weapon) model. |
 
 ### Response
@@ -376,7 +421,12 @@ None.
 
 ## List Sister Ephemeras
 
-<ApiEndpoint method="GET" path="/v2/sister/ephemeras" summary="Get all tradable sister ephemeras." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/sister/ephemeras"
+  summary="Get all tradable sister ephemeras."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Response
 
@@ -394,7 +444,12 @@ None.
 
 ## List Sister Quirks
 
-<ApiEndpoint method="GET" path="/v2/sister/quirks" summary="Get all tradable sister quirks." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/sister/quirks"
+  summary="Get all tradable sister quirks."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Response
 
@@ -412,7 +467,12 @@ None.
 
 ## List Locations
 
-<ApiEndpoint method="GET" path="/v2/locations" summary="Get all known locations." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/locations"
+  summary="Get all known locations."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Response
 
@@ -430,7 +490,12 @@ None.
 
 ## List NPCs
 
-<ApiEndpoint method="GET" path="/v2/npcs" summary="Get all known NPCs." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/npcs"
+  summary="Get all known NPCs."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Response
 
@@ -448,7 +513,12 @@ None.
 
 ## List Missions
 
-<ApiEndpoint method="GET" path="/v2/missions" summary="Get all known missions." badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]} />
+<ApiEndpoint
+  method="GET"
+  path="/v2/missions"
+  summary="Get all known missions."
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
+/>
 
 ### Response
 

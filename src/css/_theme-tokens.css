@@ -31,7 +31,7 @@
   --light-card-shadow: rgba(10, 24, 32, 0.16);
   --light-hero-glow-primary: rgba(240, 200, 112, 0.32);
   --light-hero-glow-secondary: rgba(255, 196, 96, 0.22);
-  --light-sidebar-bg: rgba(255, 255, 255, 0.70);
+  --light-sidebar-bg: rgba(255, 255, 255, 0.7);
   --light-accent-light: #ffdfa6;
   --light-accent-dark: #e6b85e;
   --light-accent-focus: #ffffff;
@@ -194,7 +194,6 @@
  * ============================================================ */
 
 :root {
-
   /* Method badges */
   --color-method-get: #34abd6;
   --color-method-post: #b994ff;
@@ -232,16 +231,30 @@
   --color-badge-danger-bg: rgba(255, 107, 107, 0.14);
 
   /* Endpoint gradient top bar */
-  --endpoint-topbar-gradient: linear-gradient(90deg, var(--gradient-one), var(--gradient-two), var(--gradient-three));
+  --endpoint-topbar-gradient: linear-gradient(
+    90deg,
+    var(--gradient-one),
+    var(--gradient-two),
+    var(--gradient-three)
+  );
 
   /* Message gradient top bar */
-  --message-topbar-gradient: linear-gradient(90deg, var(--gradient-three), #b994ff, var(--gradient-two));
+  --message-topbar-gradient: linear-gradient(
+    90deg,
+    var(--gradient-three),
+    #b994ff,
+    var(--gradient-two)
+  );
 
   /* Menu hover */
   --menu-hover-bg: rgba(230, 184, 94, 0.14);
 
   /* Table header gradient */
-  --table-head-gradient: linear-gradient(90deg, rgba(19, 193, 144, 0.14), rgba(240, 200, 112, 0.12));
+  --table-head-gradient: linear-gradient(
+    90deg,
+    rgba(19, 193, 144, 0.14),
+    rgba(240, 200, 112, 0.12)
+  );
 
   /* Table even row */
   --table-even-row-bg: rgba(122, 154, 165, 0.08);

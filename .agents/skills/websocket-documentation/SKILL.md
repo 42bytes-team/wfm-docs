@@ -85,17 +85,17 @@ If a handler is a stub, do not document it as implemented. Add a short “not im
 
 Common source files:
 
-| File | Purpose |
-|---|---|
-| `src/apps/keyleth-ws/app.go` | Module assembly and WebSocket route registration. |
-| `src/apps/keyleth-ws/routes.go` | HTTP path for the WebSocket server, currently `/socket`. |
-| `src/pkgs/websockets/messages.go` | Public message envelope: `route`, `payload`, `id`, `meta`. |
-| `src/pkgs/websockets/const.go` | Generic WebSocket error routes. |
-| `src/apps/keyleth-ws/middlewares/protect.go` | Auth/role/scope/tier/verification protection behavior. |
-| `src/apps/keyleth-ws/modules/user` | Sign-in, sign-out, account events. |
-| `src/apps/keyleth-ws/modules/status` | Status/activity command and status stream event. |
-| `src/apps/keyleth-ws/modules/subs` | Order subscription commands and events. |
-| `src/apps/keyleth-ws/modules/reporter` | Online count event. |
+| File                                         | Purpose                                                    |
+| -------------------------------------------- | ---------------------------------------------------------- |
+| `src/apps/keyleth-ws/app.go`                 | Module assembly and WebSocket route registration.          |
+| `src/apps/keyleth-ws/routes.go`              | HTTP path for the WebSocket server, currently `/socket`.   |
+| `src/pkgs/websockets/messages.go`            | Public message envelope: `route`, `payload`, `id`, `meta`. |
+| `src/pkgs/websockets/const.go`               | Generic WebSocket error routes.                            |
+| `src/apps/keyleth-ws/middlewares/protect.go` | Auth/role/scope/tier/verification protection behavior.     |
+| `src/apps/keyleth-ws/modules/user`           | Sign-in, sign-out, account events.                         |
+| `src/apps/keyleth-ws/modules/status`         | Status/activity command and status stream event.           |
+| `src/apps/keyleth-ws/modules/subs`           | Order subscription commands and events.                    |
+| `src/apps/keyleth-ws/modules/reporter`       | Online count event.                                        |
 
 ## Message Envelope Rules
 
@@ -143,7 +143,7 @@ Use the style from `docs/contributing/websocket-message-format.mdx` and the exis
 Required import pattern when using components:
 
 ```mdx
-import {ApiBadge, ApiCallout, WsMessage} from '@site/src/components/ApiEndpoint';
+import { ApiBadge, ApiCallout, WsMessage } from '@site/src/components/ApiEndpoint';
 ```
 
 Use this section shape:
@@ -157,7 +157,7 @@ Use this section shape:
   type="Command"
   route="@wfm|cmd/module/action"
   summary="Short behavior description."
-  badges={[{kind: 'neutral', icon: '💬', label: 'Command'}]}
+  badges={[{ kind: 'neutral', icon: '💬', label: 'Command' }]}
 />
 
 <ApiCallout kind="warning" icon="🔒" title="Requires">
@@ -179,8 +179,8 @@ Use this section shape:
 
 #### Payload Fields
 
-| Field | Type | Description |
-|---|---|---|
+| Field   | Type                                       | Description        |
+| ------- | ------------------------------------------ | ------------------ |
 | `field` | <ApiBadge kind="neutral" label="string" /> | Field description. |
 
 #### Success Message
@@ -190,6 +190,7 @@ Use this section shape:
   "route": "@wfm|cmd/module/action:ok",
   "id": "message-id"
 }
+```
 ````
 
 #### Error Message
@@ -201,7 +202,8 @@ Use this section shape:
   "id": "message-id"
 }
 ```
-```
+
+````
 
 Omit sections that do not apply. Events do not need `Client Message`, `Success Message`, or `Error Message` sections.
 
@@ -215,7 +217,7 @@ Common WebSocket badges:
 {kind: 'neutral', icon: '🔁', label: 'Stream'}
 {kind: 'auth', icon: '🔒', label: 'Auth required'}
 {kind: 'danger', icon: '🚧', label: 'Not implemented'}
-```
+````
 
 Always include text labels. Do not use emoji as the only source of meaning.
 

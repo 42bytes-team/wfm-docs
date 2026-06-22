@@ -26,13 +26,13 @@ We know this is not ideal, and we are sorry for the messy transition period.
 
 ## Where To Start
 
-| Area | Use It For |
-|---|---|
-| [HTTP API](./api/overview.mdx) | Reading marketplace data, managing orders, working with users, achievements, manifests, and dashboard content. |
-| [WebSockets](./websockets/overview.mdx) | Receiving realtime status updates, online reports, account events, and order subscription events. |
-| [Data Models](./data-models.mdx) | Understanding reusable response shapes such as `Item`, `Order`, `User`, `RichStatus`, and shared enum values. |
-| [OAuth 2.0](./oauth/overview.md) | Planned OAuth 2.0 behavior. Public client registration is not available yet. |
-| [Rules](./rules/overview.md) | Understanding public marketplace and API-client policy. |
+| Area                                    | Use It For                                                                                                     |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| [HTTP API](./api/overview.mdx)          | Reading marketplace data, managing orders, working with users, achievements, manifests, and dashboard content. |
+| [WebSockets](./websockets/overview.mdx) | Receiving realtime status updates, online reports, account events, and order subscription events.              |
+| [Data Models](./data-models.mdx)        | Understanding reusable response shapes such as `Item`, `Order`, `User`, `RichStatus`, and shared enum values.  |
+| [OAuth 2.0](./oauth/overview.md)        | Planned OAuth 2.0 behavior. Public client registration is not available yet.                                   |
+| [Rules](./rules/overview.md)            | Understanding public marketplace and API-client policy.                                                        |
 
 ## Questions And Support
 

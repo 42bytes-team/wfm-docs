@@ -4,7 +4,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-import ApiEndpoint, {ApiBadge} from '@site/src/components/ApiEndpoint';
+import ApiEndpoint, { ApiBadge } from '@site/src/components/ApiEndpoint';
 
 # Achievements
 
@@ -16,7 +16,7 @@ Endpoints for public achievements and user achievement progress.
   method="GET"
   path="/v2/achievements"
   summary="Get all available achievements."
-  badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]}
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
 />
 
 Secret achievements are omitted unless the requester has role `admin`.
@@ -46,9 +46,9 @@ None.
 <ApiEndpoint
   method="GET"
   path="/v2/achievements/user/{slug}"
-  aliases={["/v2/achievements/userId/{userId}"]}
+  aliases={['/v2/achievements/userId/{userId}']}
   summary="Get a user's achievements."
-  badges={[{kind: 'i18n', icon: '🇬🇧', label: 'Language aware'}]}
+  badges={[{ kind: 'i18n', icon: '🇬🇧', label: 'Language aware' }]}
 />
 
 Anonymous users and unrelated users do not receive hidden achievements. The requested user and users with role `moderator` or higher can receive hidden achievements.
@@ -57,15 +57,15 @@ Anonymous users and unrelated users do not receive hidden achievements. The requ
 
 #### URL Parameters
 
-| Name | Type | Description |
-|---|---|---|
-| `slug` | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [User](../data-models.mdx#user) model. |
-| `userId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [User](../data-models.mdx#user) model. |
+| Name     | Type                                       | Description                                                  |
+| -------- | ------------------------------------------ | ------------------------------------------------------------ |
+| `slug`   | <ApiBadge kind="neutral" label="string" /> | `slug` field from the [User](../data-models.mdx#user) model. |
+| `userId` | <ApiBadge kind="neutral" label="string" /> | `id` field from the [User](../data-models.mdx#user) model.   |
 
 #### Query Parameters
 
-| Name | Type | Description |
-|---|---|---|
+| Name       | Type                                              | Description                                                                                                                                   |
+| ---------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | `featured` | <ApiBadge kind="neutral" label="presence flag" /> | When present, return only achievements where `state.featured` is `true`. The value is ignored, so `?featured=false` still enables the filter. |
 
 ### Response

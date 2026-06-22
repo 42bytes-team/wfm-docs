@@ -4,7 +4,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-import {ApiBadge, ApiCallout} from '@site/src/components/ApiEndpoint';
+import { ApiBadge, ApiCallout } from '@site/src/components/ApiEndpoint';
 
 # Overview
 
@@ -22,9 +22,9 @@ This documentation describes WebSocket API version `v0.13.0`.
 
 ## Connection
 
-| Environment | URL |
-|---|---|
-| Production | `wss://ws.warframe.market/socket` |
+| Environment | URL                               |
+| ----------- | --------------------------------- |
+| Production  | `wss://ws.warframe.market/socket` |
 
 The server requires the `wfm` WebSocket subprotocol. Connections without this subprotocol are rejected.
 
@@ -48,35 +48,35 @@ All messages are JSON-encoded.
 }
 ```
 
-| Field | Type | Description |
-|---|---|---|
-| `route` | <ApiBadge kind="neutral" label="string" /> | Route that selects the server or client handler. |
-| `payload` | <ApiBadge kind="neutral" label="unknown" /> | Route-specific message body. Omitted when empty. |
-| `id` | <ApiBadge kind="neutral" label="string" /> | Optional message ID. Command responses reuse the incoming command `id` for correlation. |
-| `meta` | <ApiBadge kind="neutral" label="object" /> | Optional stream metadata for ordered or deduplicated realtime events. |
-| `meta.stream` | <ApiBadge kind="neutral" label="string" /> | Stream name. Status messages use `status:{userId}`. |
-| `meta.revision` | <ApiBadge kind="neutral" label="number" /> | Monotonic stream revision. |
+| Field           | Type                                        | Description                                                                             |
+| --------------- | ------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `route`         | <ApiBadge kind="neutral" label="string" />  | Route that selects the server or client handler.                                        |
+| `payload`       | <ApiBadge kind="neutral" label="unknown" /> | Route-specific message body. Omitted when empty.                                        |
+| `id`            | <ApiBadge kind="neutral" label="string" />  | Optional message ID. Command responses reuse the incoming command `id` for correlation. |
+| `meta`          | <ApiBadge kind="neutral" label="object" />  | Optional stream metadata for ordered or deduplicated realtime events.                   |
+| `meta.stream`   | <ApiBadge kind="neutral" label="string" />  | Stream name. Status messages use `status:{userId}`.                                     |
+| `meta.revision` | <ApiBadge kind="neutral" label="number" />  | Monotonic stream revision.                                                              |
 
 ## Message Types
 
-| Marker | Meaning |
-|---|---|
-| <ApiBadge kind="neutral" icon="💬" label="Command" /> | Client request that expects `:ok`, `:error`, or protection error response. |
-| <ApiBadge kind="neutral" icon="🔔" label="Event" /> | One-way server message that does not expect a response. |
-| <ApiBadge kind="neutral" icon="🔁" label="Stream" /> | Event sequence with `meta.stream` and `meta.revision` for ordering. |
-| <ApiBadge kind="auth" icon="🔒" label="Auth required" /> | Message requires an authenticated and authorized client. |
-| <ApiBadge kind="danger" icon="🚧" label="Not implemented" /> | Route or behavior exists only as a planned/stubbed feature. |
+| Marker                                                       | Meaning                                                                    |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| <ApiBadge kind="neutral" icon="💬" label="Command" />        | Client request that expects `:ok`, `:error`, or protection error response. |
+| <ApiBadge kind="neutral" icon="🔔" label="Event" />          | One-way server message that does not expect a response.                    |
+| <ApiBadge kind="neutral" icon="🔁" label="Stream" />         | Event sequence with `meta.stream` and `meta.revision` for ordering.        |
+| <ApiBadge kind="auth" icon="🔒" label="Auth required" />     | Message requires an authenticated and authorized client.                   |
+| <ApiBadge kind="danger" icon="🚧" label="Not implemented" /> | Route or behavior exists only as a planned/stubbed feature.                |
 
 ## Generic Errors
 
 The server may send generic errors before a route handler runs.
 
-| Route | When it is sent |
-|---|---|
-| `@ws:error/cmd/type` | Incoming message is not valid JSON for the WebSocket message envelope. |
-| `@ws:error/cmd/route` | Incoming `route` is unknown. |
-| `@ws:error/cmd/handler` | Route handler returned an unhandled error. |
-| `@wfm\|protect/error` | Protected route failed authentication or authorization checks. |
+| Route                   | When it is sent                                                        |
+| ----------------------- | ---------------------------------------------------------------------- |
+| `@ws:error/cmd/type`    | Incoming message is not valid JSON for the WebSocket message envelope. |
+| `@ws:error/cmd/route`   | Incoming `route` is unknown.                                           |
+| `@ws:error/cmd/handler` | Route handler returned an unhandled error.                             |
+| `@wfm\|protect/error`   | Protected route failed authentication or authorization checks.         |
 
 Example protection error:
 

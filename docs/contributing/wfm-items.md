@@ -25,13 +25,13 @@ If something is wrong with an item page, missing from the market, mistranslated,
 
 The repository is organized around how data is maintained.
 
-| Area | Purpose |
-|---|---|
-| `tracked/` | Items that are synced or compared with upstream game data. |
-| `untracked/` | Items that need manual maintenance. |
-| `missing/` | New or missing items that should be added to Warframe.market. |
-| `icons/` | Local icon assets used by item JSON files. |
-| `tracked/rivens/` | Riven weapons and attributes. |
+| Area              | Purpose                                                       |
+| ----------------- | ------------------------------------------------------------- |
+| `tracked/`        | Items that are synced or compared with upstream game data.    |
+| `untracked/`      | Items that need manual maintenance.                           |
+| `missing/`        | New or missing items that should be added to Warframe.market. |
+| `icons/`          | Local icon assets used by item JSON files.                    |
+| `tracked/rivens/` | Riven weapons and attributes.                                 |
 
 Folder names and generation scripts may evolve, so follow the structure already used by nearby files.
 

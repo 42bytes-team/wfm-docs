@@ -4,7 +4,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-import {ApiBadge, WsMessage} from '@site/src/components/ApiEndpoint';
+import { ApiBadge, WsMessage } from '@site/src/components/ApiEndpoint';
 
 # Subscriptions
 
@@ -16,7 +16,7 @@ Commands and events for realtime marketplace subscriptions.
   type="Command"
   route="@wfm|cmd/subscribe/newOrders"
   summary="Subscribe to a live feed of newly posted visible orders from online users."
-  badges={[{kind: 'neutral', icon: '💬', label: 'Command'}]}
+  badges={[{ kind: 'neutral', icon: '💬', label: 'Command' }]}
 />
 
 ### Client Message
@@ -34,10 +34,10 @@ Commands and events for realtime marketplace subscriptions.
 
 ### Payload Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `platform` | <ApiBadge kind="neutral" label="Platform" /> | Optional. One of `pc`, `ps4`, `xbox`, `switch`, `mobile`. Omit to subscribe to all platforms. |
-| `crossplay` | <ApiBadge kind="neutral" label="bool" /> | Optional. Defaults to `true`. If `platform` is `switch`, the server forces `crossplay` to `false`. |
+| Field       | Type                                         | Description                                                                                        |
+| ----------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `platform`  | <ApiBadge kind="neutral" label="Platform" /> | Optional. One of `pc`, `ps4`, `xbox`, `switch`, `mobile`. Omit to subscribe to all platforms.      |
+| `crossplay` | <ApiBadge kind="neutral" label="bool" />     | Optional. Defaults to `true`. If `platform` is `switch`, the server forces `crossplay` to `false`. |
 
 You can have multiple active subscriptions at the same time, such as one for `pc` and one for `xbox`.
 
@@ -66,7 +66,7 @@ You can have multiple active subscriptions at the same time, such as one for `pc
   type="Command"
   route="@wfm|cmd/unsubscribe/newOrders"
   summary="Unsubscribe from a new-order subscription."
-  badges={[{kind: 'neutral', icon: '💬', label: 'Command'}]}
+  badges={[{ kind: 'neutral', icon: '💬', label: 'Command' }]}
 />
 
 You must send the same payload used for subscription. This is required because a client can have multiple subscriptions active simultaneously.
@@ -86,10 +86,10 @@ You must send the same payload used for subscription. This is required because a
 
 ### Payload Fields
 
-| Field | Type | Description |
-|---|---|---|
-| `platform` | <ApiBadge kind="neutral" label="Platform" /> | Optional. Must match the subscription payload. Omit only to unsubscribe from an all-platform subscription. |
-| `crossplay` | <ApiBadge kind="neutral" label="bool" /> | Optional. Defaults to `true`. If `platform` is `switch`, the server forces `crossplay` to `false`. |
+| Field       | Type                                         | Description                                                                                                |
+| ----------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `platform`  | <ApiBadge kind="neutral" label="Platform" /> | Optional. Must match the subscription payload. Omit only to unsubscribe from an all-platform subscription. |
+| `crossplay` | <ApiBadge kind="neutral" label="bool" />     | Optional. Defaults to `true`. If `platform` is `switch`, the server forces `crossplay` to `false`.         |
 
 ### Success Message
 
@@ -116,7 +116,7 @@ You must send the same payload used for subscription. This is required because a
   type="Event"
   route="@wfm|event/subscriptions/newOrder"
   summary="Send a matching newly created visible order to subscribers."
-  badges={[{kind: 'neutral', icon: '🔔', label: 'Event'}]}
+  badges={[{ kind: 'neutral', icon: '🔔', label: 'Event' }]}
 />
 
 Sent to matching new-order subscriptions when a visible order from a non-offline user is created.
